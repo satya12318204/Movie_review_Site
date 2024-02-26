@@ -1,0 +1,86 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url('../images/clapperboard-cinema-tickets-space.jpg');
+    background-size: cover;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.signup-container {
+    max-width: 450px;
+    background-color: rgb(40, 36, 36);
+    width: 80%;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.signup-container h2 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.form-group input {
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #3498db;
+    border-radius: 5px;
+    margin-top: 5px;
+    transition: border-color 0.5s;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.form-group input:focus {
+    border-color: #2980b9;
+}
+
+.form-group button {
+    background-color: gold;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.form-group button:hover {
+    background-color: #2980b9;
+    color: gold;
+    transform: scale(1.1);
+}
+
+.disclaimer {
+    color: #fff;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.disclaimer a {
+    color: orange;
+    text-decoration: none;
+}
