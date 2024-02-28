@@ -1,114 +1,73 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 20px auto; /* Add margin to the top */
-    padding: 20px;
-}
-
-header {
-    background-color: #141414;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
+    box-sizing: border-box;
+    background-image: url(../images/wepik-export-202402281959182WGn.jpeg);
+    position: absolute;
+    background-repeat: no-repeat;
 }
 
 nav {
-    background-color: #333;
-    padding: 10px 20px; /* Increased padding for space */
-    text-align: right; /* Align text to the right */
-    display: flex;
-    justify-content: space-between; /* Add space between items */
-    align-items: center; /* Center items vertically */
-}
-
-nav a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 20px;
-    font-size: 18px;
-    transition: color 0.3s; /* Add color transition */
-}
-
-nav a:hover {
-    color: #3498db;
-}
-
-.hero {
-    background-image: url('../images/newlog1.jpg');
-    background-size: cover;
-    background-position: center; /* Adjusted background-position */
-    height: 1000px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #fff;
-}
-
-.hero h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
-}
-
-.featured-movies {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 50px;
-}
-
-.featured-movie {
-    width: 300px;
-    margin: 20px;
-    text-align: center;
-    background-color: #f4f4f4;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.featured-movie img {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
-    border-radius: 10px 10px 0 0;
-}
-
-.featured-movie-content {
     padding: 20px;
 }
 
-.featured-movie h2 {
-    margin-top: 0;
+#nav_icons {
+    padding-left: 20px;
+    padding-right: 20px;
 }
-
-footer {
-    background-color: #333;
-    color: #fff;
+.c1 {
     text-align: center;
-    padding: 20px 0;
+    margin-top: 60px; /* Adjust as needed for spacing below the nav bar */
 }
 
-.guest-button,
-.login-button {
-    
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
+.c1 img {
+    width: 500px; /* Adjust the width as needed */
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Display the list items in a row */
+}
+
+nav li {
+    margin: 0 10px; /* Adjust as needed for more space */
+}
+
+nav a {
     text-decoration: none;
-    display: inline-block;
-    margin-top: 20px;
-    transition: background-color 0.3s, color 0.3s, transform 0.3s; /* Add transitions */
+    color: black;
+    font-weight: bold;
+    padding: 8px 12px;
 }
 
-.guest-button:hover,
-.login-button:hover {
-    
-    color: #fff;
-    transform: scale(1.1);
+.content {
+    margin: 100px auto 0; /* Adjust margin-top for spacing */
+    padding: 20px;
+    text-align: center;
+}
+
+.content h1 {
+    font-size: 2.5em;
+    color: black;
+}
+
+.content p {
+    font-size: 1.2em;
+    color: #555;
+}
+
+.logo {
+    text-align: center;
+    margin-top: 20px; /* Adjust as needed for spacing */
+}
+
+.logo img {
+    width: 50px; /* Adjust the width as needed */
 }
