@@ -1,6 +1,6 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url('../images/wepik-export-202402281959182WGn.jpeg');
+    background-image: url('../images/below_1.jpeg');
     background-size: cover;
     text-align: center;
     margin: 0;
@@ -13,11 +13,14 @@ body {
 
 .signup-container {
     max-width: 450px;
-    background-color: rgb(40, 36, 36);
+    background-color: black ;
     width: 80%;
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+
+    /* Add margin to the right side to move it a bit to the right */
+    margin-left: 400px; /* You can adjust this value as needed */
 }
 
 .signup-container h2 {
@@ -57,7 +60,7 @@ body {
 }
 
 .form-group button {
-    background-color: gold;
+    background-color: red;
     color: #fff;
     padding: 10px;
     border: none;
@@ -67,7 +70,7 @@ body {
 }
 
 .form-group button:hover {
-    background-color: #2980b9;
+    background-color: black;
     color: gold;
     transform: scale(1.1);
 }
