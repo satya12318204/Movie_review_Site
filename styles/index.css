@@ -3,8 +3,9 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-image: url(../images/wepik-export-202402281959182WGn.jpeg);
-    position: absolute;
+    background-image: url(../images/index_logo.jpeg);
+    background-size: cover;
+    position:absolute;
     background-repeat: no-repeat;
 }
 
@@ -19,6 +20,12 @@ nav {
 #nav_icons {
     padding-left: 20px;
     padding-right: 20px;
+    transition: color 0.3s ease-in-out, background 0.3s ease-in-out; /* Add transition for color and background */
+}
+
+#nav_icons:hover {
+    color: white; /* Change text color to white on hover */
+    background: black; /* Change background color to black on hover */
 }
 .c1 {
     text-align: center;
