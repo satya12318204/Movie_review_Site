@@ -3,26 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing page</title>
-    <link rel="stylesheet" href="../styles/index.css">
+    <title>CineSurf</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-    <nav >
-        <a href="home.html" id="nav_icons">Continue as Guest</a>
-        <a href="#" id="nav_icons">About Us</a>
-        <a href="#" id="nav_icons">FAQ</a>
-        <a href="contact.html" id="nav_icons">Contact</a>
-    </nav>
+
+    <header class="header">
+        <a href="index.html" class="logo">CineSurf</a>
     
-    <div class = "c1">
-        <img src = "../images/174333105_padded_logo.png">
-    </div>
+        <nav class="navbar">
+          <a href="#">Popular</a>
+          <a href="#">Movies</a>
+          <a href="#">TV Shows</a>
+          <form id="form">
+            <input type="search" placeholder="Search here..." id="query">
+            <i class="fa fa-search"></i>
+          </form>
+        </nav>
+      </header>
 
-    <div class="below">
-        <img src="../images/index_below.jpg" height="600px" width="900px">
-    </div>
+      <div class="spacediv"></div>
 
-    <div class="content">
-    </div>
+      <main id="main">
+        <div class="movie">
+          <img src="black-panther-121054-328110478.jpg" alt="image">
+
+          <div class="movie-info">
+            <h3>Movie Title</h3>
+            <span class="green">9.8</span>
+          </div>
+
+          <div class="overview">
+            <h3>overview</h3>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum similique officiis nam numquam molestias. Incidunt et suscipit, inventore nemo perferendis omnis dolorum tenetur nam vel, mollitia itaque iusto asperiores ipsam?
+          </div>
+        </div>
+      </main>
+    
+    
+<script src="app.js"></script>  
 </body>
 </html>
