@@ -10,7 +10,7 @@ function handleLogin() {
     // Perform additional validation or submit the form to the server
 
     // For demonstration purposes, just navigate to home1.html
-    window.location.href = "../html/home1.html";
+    window.location.href = "../html/index.html";
 
     return false;
 }

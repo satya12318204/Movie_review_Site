@@ -3,88 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CineSurf-Home</title>
+    <title>CineSurf</title>
     <link rel="stylesheet" href="../styles/home.css" />
-    <link rel="icon" href="logo2.jpg" type="image/x-icon">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Add your CSS styles here or link to an external stylesheet */
+    </style>
 </head>
 <body>
-    <header>
-        <h1>CINE SURF MOVIE REVIEW WEBSITE</h1>
+    <header class="header">
+        <a href="index.html" class="logo">CineSurf</a>
+    
+        <nav class="navbar">
+            <a href="#">Popular</a>
+            <a href="#">Movies</a>
+            <a href="#">TV Shows</a>
+            <form id="form">
+                <input type="search" placeholder="Search here..." id="query">
+                <i class="fa fa-search"></i>
+            </form>
+        </nav>
     </header>
 
-    <nav>
-        <a href="#">Home</a>
-        <a href="../html/contact.html">Contact Us</a>
-        <a href="#">Services</a>
-        <a href="#">Movie Genres</a>
-    </nav>
+    <div class="spacediv"></div>
 
-    <table>
-        <tr>
-            <td class="movie-details">
-                <a href='../html/login.html'>
-                    <img src="../images/avatar.jpg" alt="Movie 1">
-                </a>
-                <h2>Avatar</h2>
-                <p>Director: James Cameron</p>
-                <p>Release Date: 2009</p>
-            </td>
-
-            <td class="movie-details">
-                <a href="../html/login.html">
-                    <img src="../images/titanic.jpeg" alt="Movie 1">
-                </a>
-                <h2>Titanic</h2>
-                <p>Director: James Cameron</p>
-                <p>Release Date: 1997</p>
-            </td>
-
-            <td class="movie-details">
-                <a href="../html/login.html">
-                    <img src="../images/avengers.jpeg" alt="Movie 1">
+    <main id="main">
+        <div class="movie">
+            <a href='../html/login.html'>
+                <img src="../images/avatar.jpg" alt="Avatar">
             </a>
-                <h2>Avengers Endgame</h2>
-                <p>Director: Anthony Russo</p>
-                <p>Release Date: 2019</p>
-            </td>
-        </tr>
+            <div class="movie-info">
+                <h3>Avatar</h3>
+                <span class="green">7.5</span>
+            </div>
+            <div class="overview">
+                <h3>overview</h3>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum similique officiis nam numquam molestias. Incidunt et suscipit, inventore nemo perferendis omnis dolorum tenetur nam vel, mollitia itaque iusto asperiores ipsam?
+            </div>
+        </div>
 
-        <!-- Repeat the structure for additional rows and movies -->
-        <tr>
-            <!-- Fourth Movie -->
-            <td class="movie-details">
-                <a href="../html/login.html">
+        <div class="movie">
+            <a href="../html/login.html">
+                <img src="../images/titanic.jpeg" alt="Titanic">
+            </a>
+            <div class="movie-info">
+                <h3>Titanic</h3>
+                <span class="green">7.9 </span>
+            </div>
+            <div class="overview">
+                <h3>overview</h3>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum similique officiis nam numquam molestias. Incidunt et suscipit, inventore nemo perferendis omnis dolorum tenetur nam vel, mollitia itaque iusto asperiores ipsam?
+            </div>
+        </div>
+
+        <div class="movie">
+            <a href="../html/login.html">
+                <img src="../images/avengers.jpeg" alt="Avengers Endgame">
+            </a>
+            <div class="movie-info">
+                <h3>Avengers Endgame</h3>
+                <span class="green">8.3</span>
+            </div>
+            <div class="overview">
+                <h3>overview</h3>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum similique officiis nam numquam molestias. Incidunt et suscipit, inventore nemo perferendis omnis dolorum tenetur nam vel, mollitia itaque iusto asperiores ipsam?
+            </div>
+        </div>
+        <div class="movie">
+            <a href="../html/login.html">
                 <img src="../images/rrr.jpeg" alt="RRR">
             </a>
-                <h2>RRR</h2>
-                <p>Director: S S Rajamouli</p>
-                <p>Release Date: 2022</p>
-            </td>
+            <div class="movie-info">
+                <h3>RRR</h3>
+                <span class="green">7.8</span>
+            </div>
+            <div class="overview">
+                <h3>overview</h3>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum similique officiis nam numquam molestias. Incidunt et suscipit, inventore nemo perferendis omnis dolorum tenetur nam vel, mollitia itaque iusto asperiores ipsam?
+            </div>
+        </div>
+    <div class="movie">
+        <a href="../html/login.html">
+            <img src="../images/bahubali.jpeg" alt="Bahubali 2(The Conclusion)">
+        </a>
+        <div class="movie-info">
+            <h3>Bahubali 2 (The Conclusion)</h3>
+            <span class="green">7.4</span>
+        </div>
+        <div class="overview">
+            <h3>overview</h3>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum similique officiis nam numquam molestias. Incidunt et suscipit, inventore nemo perferendis omnis dolorum tenetur nam vel, mollitia itaque iusto asperiores ipsam?
+        </div>
+    </div>
+    <div class="movie">
+        <a href="../html/login.html">
+            <img src="../images/hanuman.jpeg" alt="Hanuman">
+        </a>
+        <div class="movie-info">
+            <h3>Hanuman</h3>
+            <span class="green">7</span>
+        </div>
+        <div class="overview">
+            <h3>overview</h3>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum similique officiis nam numquam molestias. Incidunt et suscipit, inventore nemo perferendis omnis dolorum tenetur nam vel, mollitia itaque iusto asperiores ipsam?
+        </div>
+    </div>
+    <div class="movie">
+        <a href="../html/login.html">
+            <img src="../images/hanuman.jpeg" alt="Hanuman">
+        </a>
+        <div class="movie-info">
+            <h3>Hanuman</h3>
+            <span class="green">7</span>
+        </div>
+        <div class="overview">
+            <h3>overview</h3>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum similique officiis nam numquam molestias. Incidunt et suscipit, inventore nemo perferendis omnis dolorum tenetur nam vel, mollitia itaque iusto asperiores ipsam?
+        </div>
+    </div>
+    <div class="movie">
+        <a href="../html/login.html">
+            <img src="../images/hanuman.jpeg" alt="Hanuman">
+        </a>
+        <div class="movie-info">
+            <h3>Hanuman</h3>
+            <span class="green">7</span>
+        </div>
+        <div class="overview">
+            <h3>overview</h3>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum similique officiis nam numquam molestias. Incidunt et suscipit, inventore nemo perferendis omnis dolorum tenetur nam vel, mollitia itaque iusto asperiores ipsam?
+        </div>
+    </div>
+    <div class="movie">
+        <a href="../html/login.html">
+            <img src="../images/hanuman.jpeg" alt="Hanuman">
+        </a>
+        <div class="movie-info">
+            <h3>Hanuman</h3>
+            <span class="green">7</span>
+        </div>
+        <div class="overview">
+            <h3>overview</h3>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum similique officiis nam numquam molestias. Incidunt et suscipit, inventore nemo perferendis omnis dolorum tenetur nam vel, mollitia itaque iusto asperiores ipsam?
+        </div>
+    </div>
+    <div class="movie">
+        <a href="../html/login.html">
+            <img src="../images/hanuman.jpeg" alt="Hanuman">
+        </a>
+        <div class="movie-info">
+            <h3>Hanuman</h3>
+            <span class="green">7</span>
+        </div>
+        <div class="overview">
+            <h3>overview</h3>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum similique officiis nam numquam molestias. Incidunt et suscipit, inventore nemo perferendis omnis dolorum tenetur nam vel, mollitia itaque iusto asperiores ipsam?
+        </div>
+    </div>
+    </main>
+    
 
-            <!-- Fifth Movie -->
-            <td class="movie-details">
-                <a href="../html/login.html">
-                <img src="../images/bahubali.jpeg" alt="Bahubali 2">
-            </a>
-                <h2>Bahubali 2</h2>
-                <p>Director: S S Rajamouli</p>
-                <p>Release Date: 2017</p>
-            </td>
-
-            <!-- Sixth Movie -->
-            <td class="movie-details">
-                <a href="../html/login.html">
-                <img src="../images/hanuman.jpeg" alt="PK">
-            </a>
-                <h2>Hanuman</h2>
-                <p>Director: Prasanth verma</p>
-                <p>Release Date: 2024</p>
-            </td>
-        </tr>
-
-        <!-- Repeat the structure for additional rows and movies -->
-    </table>
     <script src="../scripts/index.js" defer></script>
 </body>
 </html>
