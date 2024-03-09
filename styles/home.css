@@ -1,56 +1,225 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-        body {
-            background-image: url('../images/laura-barry-nEw6iC2SOcM-unsplash.jpg');
-            background-size: cover;
-            background-position: center;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
 
-        header {
-            text-align: center;
-            padding: 20px;
-            color: black;
-        }
+.spacediv{
+  padding: 16px;
+}
 
-        nav {
-            text-align: center;
-            padding: 10px;
-        }
 
-        nav a {
-            text-decoration: none;
-            margin: 0 15px;
-            color: #333;
-        }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
 
-        table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 20px;
-            margin-top: 20px;
-        }
+body {
+  min-height: 100vh;
+  background-color: #131720;
+  padding-top: 80px;
+}
 
-        .movie-details {
-            color: black;
-            text-align: center;
-            margin-top: 20px;
-            background: rgba(255, 255, 255, 0.7);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 100px;
+  background: slateblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
 
-        .movie-details img {
-            width: 150px;
-            height: 225px;
-            object-fit: cover;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            transition: transform 0.3s ease-in-out;
-        }
+.logo {
+  font-size: 32px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  position: relative;
+}
 
-        .movie-details img:hover {
-            transform: scale(1.1);
-        }
+.logo::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #fff;
+  transition: width 0.3s ease;
+}
+
+.logo:hover::before {
+  width: 100%;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+.navbar a {
+  font-size: 18px;
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  margin-left: 40px;
+  position: relative;
+}
+
+.navbar a::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: #fff;
+  transition: width 0.3s ease;
+}
+
+.navbar a:hover::before {
+  width: 100%;
+}
+
+.navbar form {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-left: 30px;
+
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+.navbar form input[type="search"] {
+  width: 0;
+  overflow: hidden;
+  transition: width 0.5s ease;
+  padding: 10px 10px;
+  border: 0;
+  border-radius: 20px;
+  font-size: 1em;
+}
+
+.navbar form i::before {
+  content: "\f002";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  left: 5px;
+  transform: translate(-50%, -50%);
+  color: red;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 15px;
+}
+
+.navbar form i {
+  position: absolute;
+  top: 50%;
+  right: 0.25px;
+  transform: translateY(-50%);
+  color: red;
+  font-size: 15px;
+}
+
+.navbar form:hover input[type="search"] {
+  width: 150px;
+  padding: 8px 10px;
+}
+
+.navbar form:hover i {
+  right: 155px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.fa {
+    box-sizing: border-box;
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    font-size: 1.2em;
+    transition: all 1s ease;
+    color: white;
+  }
+
+  main{
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+  }
+
+  .movie{
+    width: 300px;
+    margin: 1rem;
+    border-radius: 3px;
+    box-shadow: 0.2px 4px 5px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+
+  .movie img{
+    width: 100%;
+
+  }
+
+  .movie-info{
+    color: #eee;
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem 1rem;
+    letter-spacing: 0.5px;
+  }
+
+  .movie-info h3{
+    margin-top: 0;
+  }
+
+  .movie-info span{
+    background-color: #22254b;
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
+    font-weight: bold;
+  }
+
+  .movie-info span .green{
+    color: green;
+  }
+
+  .movie-info span .orange{
+    color: orange;
+  }
+
+  .movie-info span .red{
+    color: red;
+  }
+
+  .overview{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    padding: 1rem;
+    max-height: 100%;
+    transform: translateY(101%);
+    transition: transform 0.3s ease-in;
+  }
+
+  .movie:hover .overview{
+    transform: translateY(0);
+  }
+
+
+  
+  
