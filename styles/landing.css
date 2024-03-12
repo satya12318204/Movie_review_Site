@@ -146,6 +146,18 @@ body {
     font-weight: 700;
     position: relative;
 }
+.logo {
+    font-size: 28px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    position: relative;
+    transition: transform 0.3s ease; /* Added transition property */
+  }
+  
+  .logo:hover {
+    transform: scale(1.05); /* Added zoom-out effect on hover */
+  }
 
 .logo::before {
     content: '';

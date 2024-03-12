@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,6 +19,7 @@
 
         <nav class="navbar">
             <a href="#">Movies</a>
+            <a href = "login.html">LOGIN</a>
             <form id="form">
                 <input type="search" placeholder="Search here..." id="query">
                 <i class="fa fa-search"></i>
@@ -38,7 +40,7 @@
     <footer class="footer">
         <p>&copy; 2024 CineSurf. All rights reserved.</p>
     </footer>
-
+    
     <script>
         const API_KEY = 'api_key=1a43f4f5121d723457a85e7db44e3404';
         const BASE = 'https://api.themoviedb.org/3/';
@@ -58,7 +60,7 @@
                 });
         }
 
-        function showMovies(data) {
+        /*function showMovies(data) {
             const mainElement = document.getElementById('main');
 
             data.forEach(movie => {
@@ -78,23 +80,34 @@
                 mainElement.appendChild(movieEl);
             });
 
-            // Add the provided movie HTML
-            const providedMovie = `
-                <div class="movie">
-                    <img src="../images/WhatsApp Image 2024-03-07 at 22.10.25_8b08c71d.jpg" alt="image">
-                    <div class="movie-info">
-                        <h3>Movie Title</h3>
-                        <span class="green">9.8</span>
-                    </div>
-                    <div class="overview">
-                        <h3>overview</h3>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum similique officiis nam numquam molestias. Incidunt et suscipit, inventore nemo perferendis omnis dolorum tenetur nam vel, mollitia itaque iusto asperiores ipsam?
-                    </div>
-                </div>
-            `;
-            mainElement.innerHTML += providedMovie;
+            
+        }*/
+        function showMovies(data) {
+            const mainElement = document.getElementById('main');
+            // Add a count variable to limit the number of movies displayed
+            let count = 0;
+        
+            data.forEach(movie => {
+                if (count < 10) {
+                    const movieEl = document.createElement("div");
+                    movieEl.classList.add('movie');
+                    movieEl.innerHTML = `
+                        <img src="${IMG_PATH}${movie.poster_path}" alt="${movie.title}">
+                        <div class="movie-info">
+                            <h3>${movie.title}</h3>
+                            <span class="${getColor(movie.vote_average)}">${movie.vote_average}</span>
+                        </div>
+                        <div class="overview">
+                            <h3>Overview</h3>
+                            ${movie.overview}
+                        </div>
+                    `;
+                    mainElement.appendChild(movieEl);
+                    count++; // Increment count after adding a movie
+                }
+            });
         }
-
+        
         function getColor(vote) {
             if (vote >= 8) {
                 return 'green';
