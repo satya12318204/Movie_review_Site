@@ -1,0 +1,359 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.spacediv {
+  padding: 16px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background-image: url("https://source.unsplash.com/1600x900/?movie");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding-top: 80px;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 100px;
+  background: linear-gradient(90deg, #ff416c, #ff4b2b);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  transition: background 0.5s;
+}
+
+.header:hover {
+  background: linear-gradient(90deg, #000000, #ff416c);
+}
+
+.logo {
+  font-size: 32px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  position: relative;
+}
+
+.logo::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #fff;
+  transition: width 0.3s ease;
+}
+
+.logo:hover::before {
+  width: 100%;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+.navbar a {
+  font-size: 18px;
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  margin-left: 40px;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.navbar a::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: #fff;
+  transition: width 0.3s ease;
+}
+
+.navbar a:hover::before {
+  width: 100%;
+}
+
+.navbar a:hover {
+  color: #f9f9f9;
+}
+
+.navbar form {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-left: 30px;
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+.navbar form input[type="search"] {
+  width: 0;
+  overflow: hidden;
+  transition: width 0.5s ease;
+  padding: 10px 30px 10px 10px; /* Adjusted padding */
+  border: 0;
+  border-radius: 20px;
+  font-size: 1em;
+  background: rgba(192, 180, 180, 0.5);
+}
+
+.navbar form i {
+  position: absolute;
+  top: 50%;
+  right: 0.25px;
+  transform: translateY(-50%);
+  color: red;
+  font-size: 15px;
+}
+
+.navbar form:hover input[type="search"] {
+  width: 150px;
+  padding: 8px 30px 8px 10px; /* Adjusted padding */
+}
+
+.navbar form:hover i {
+  right: 155px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.fa {
+  box-sizing: border-box;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  font-size: 1.2em;
+  transition: all 1s ease;
+  color: white;
+}
+
+#form {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-left: 30px;
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+#query {
+  width: 0;
+  overflow: hidden;
+  transition: width 0.5s ease;
+  padding: 10px 30px 10px 10px; /* Adjusted padding */
+  border: 0;
+  border-radius: 20px;
+  font-size: 1em;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+#form i.fa-search::before {
+  content: "\f002";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  left: 5px;
+  transform: translate(-100%, -50%);
+  color: red;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 15px;
+}
+
+#form i.fa-search {
+  position: absolute;
+  top: 50%;
+  right: 0.25px;
+  transform: translateY(-50%);
+  color: red;
+  font-size: 15px;
+}
+
+#form:hover #query {
+  width: 150px;
+  padding: 8px 30px 8px 10px; /* Adjusted padding */
+}
+
+#form:hover i.fa-search {
+  right: 155px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.movie {
+  width: 300px;
+  margin: 1rem;
+  border-radius: 3px;
+  box-shadow: 0.2px 4px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 1s ease forwards;
+  transition: transform 0.3s;
+}
+
+.movie:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.movie img {
+  width: 100%;
+}
+
+.movie-info {
+  color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem 1rem;
+  letter-spacing: 0.5px;
+  background-color: #00000054;
+}
+
+.movie-info h3 {
+  margin-top: 0;
+}
+
+.movie-info span {
+  background-color: #181a2be0;
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+.movie-info span .green {
+  color: green;
+}
+
+.movie-info span .orange {
+  color: orange;
+}
+
+.movie-info span .red {
+  color: red;
+}
+
+.overview {
+  position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: #000000af;
+    background-color: rgba(255, 255, 255, 0.774); 
+    padding: 1rem;
+    max-height: 100%;
+    transform: translateY(101%);
+    transition: transform 0.3s ease-in;
+    backdrop-filter: blur(60px); /* Apply blur effect */
+}
+
+.movie:hover .overview {
+  transform: translateY(0);
+}
+
+.user-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.user-info img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.dropdown-content {
+  color: white;
+  display: none;
+  position: absolute;
+  background-color: #000000;
+  min-width: 160px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  color: #333;
+}
+
+.dropdown-content a:hover {
+  background-color: #1411119c;
+}
+
+.user-dropdown:hover .dropdown-content {
+  display: block;
+}
+/* Unique Logout button CSS */
+nav .btn-logout-unique {
+  font-weight: bold;
+  padding: 0.8rem 1.5rem;
+  border: 2px solid #fff; /* White border */
+  background-color: transparent; /* Transparent background */
+  color: #fff; /* White text color */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+  text-transform: uppercase; /* Convert text to uppercase */
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+nav .btn-logout-unique:hover {
+  background-color: #fff; /* White background on hover */
+  color: rgb(111, 95, 212); /* Slateblue text color on hover */
+}
+
+nav .btn-logout-unique:focus {
+  outline: none; /* Remove focus outline */
+}
+
+/* Unique Logout button icon CSS */
+nav .btn-logout-unique i {
+  margin-right: 5px; /* Add some space between icon and text */
+}
+
+/* Add this CSS to your existing styles.css file or create a new one if it doesn't exist */
