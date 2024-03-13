@@ -18,11 +18,9 @@ function getMovies(url) {
 
 function showMovies(data) {
     const mainElement = document.getElementById('main');
-    // Add a count variable to limit the number of movies displayed
-    let count = 0;
 
     data.forEach(movie => {
-        if (count < 10) {
+        if (mainElement.childElementCount < 11) {
             const movieEl = document.createElement("div");
             movieEl.classList.add('movie');
             movieEl.innerHTML = `
@@ -37,7 +35,12 @@ function showMovies(data) {
                 </div>
             `;
             mainElement.appendChild(movieEl);
-            count++; // Increment count after adding a movie
+
+            // Add event listener to each movie element
+            movieEl.addEventListener('click', () => {
+                alert("Please login to view more details about this movie.");
+                window.location.href = "/login"; // Redirect to the login page
+            });
         }
     });
 }
@@ -61,5 +64,4 @@ form.addEventListener('submit', (e) => {
     } else {
         getMovies(API_URL);
     }
-});  
-
+});

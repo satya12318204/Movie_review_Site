@@ -1,5 +1,5 @@
 {
-  "name": "userauth",
+  "name": "moviereview",
   "version": "1.0.0",
   "description": "This is a fully Functional Login, signup and Logout System Using Node.JS, Express, Passport and More...",
   "main": "index.js",
