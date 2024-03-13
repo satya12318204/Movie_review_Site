@@ -237,7 +237,7 @@ main {
 }
 
 .movie-info {
-  color: #eee;
+  color: #e7e6e6;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -251,7 +251,7 @@ main {
 }
 
 .movie-info span {
-  background-color: #181a2be0;
+  background-color: #22254b;
   padding: 0.25rem 0.5rem;
   border-radius: 3px;
   font-weight: bold;
@@ -270,7 +270,7 @@ main {
 }
 
 .overview {
-  position: absolute;
+    position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
@@ -284,8 +284,9 @@ main {
 }
 
 .movie:hover .overview {
-  transform: translateY(0);
+    transform: translateY(0);
 }
+
 
 .user-dropdown {
   position: relative;

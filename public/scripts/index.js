@@ -36,6 +36,10 @@ function showMovies(data) {
             </div>
         `;
         mainElement.appendChild(movieEl);
+        // Add event listener to each movie element
+            movieEl.addEventListener('click', () => {
+                window.location.href = "/movie-info";
+            });
     });
 }
 

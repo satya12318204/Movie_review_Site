@@ -117,6 +117,10 @@ app.get("/guest", (req, res) => {
   res.render("guest");
 });
 
+app.get("/movie-info",checkAuthenticated, (req, res) => {
+  res.render("movie-info");
+});
+
 // Route to handle guest creation
 app.post("/create-guest", async (req, res) => {
   try {
