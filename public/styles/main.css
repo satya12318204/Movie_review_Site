@@ -13,7 +13,8 @@
 
 body {
   min-height: 100vh;
-  background-image: url("https://source.unsplash.com/1600x900/?movie");
+  background-image: url("");
+  background-color: #00000096;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -25,12 +26,10 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 20px 100px;
   background: linear-gradient(90deg, #ff416c, #ff4b2b);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 100;
   transition: background 0.5s;
 }
 
@@ -79,7 +78,7 @@ body {
 .navbar a::before {
   content: '';
   position: absolute;
-  bottom: -2px;
+  bottom: -4px;
   width: 0;
   height: 2px;
   background: #fff;
@@ -243,7 +242,7 @@ main {
   justify-content: space-between;
   padding: 0.5rem 1rem 1rem;
   letter-spacing: 0.5px;
-  background-color: #00000054;
+  background-color: #00000000;
 }
 
 .movie-info h3 {
@@ -251,7 +250,7 @@ main {
 }
 
 .movie-info span {
-  background-color: #22254b;
+  background-color: #20202200;
   padding: 0.25rem 0.5rem;
   border-radius: 3px;
   font-weight: bold;
@@ -286,7 +285,6 @@ main {
 .movie:hover .overview {
     transform: translateY(0);
 }
-
 
 
 
@@ -331,16 +329,16 @@ body {
 }
 
 .hero {
-    background-image: url('/images/index_logo11.jpeg');
-    /* Change the background image URL */
-    background-size: cover;
-    background-position: center;
-    color: #131720;
-    height: 70vh;
-    width: 85%;
-    overflow-y: auto;
-    position: relative;
+  background-image: url('/images/back2.jpg');
+  background-size: cover; /* Set the background size to cover */
+  background-position: center; /* Adjust the background position */
+  color: #131720;
+  height: 70vh;
+  width: 175vh;
+  overflow-y: auto;
+  position: relative;
 }
+
 
 /* Adjust the styles to center the hero content */
 .hero-content {
@@ -350,8 +348,8 @@ body {
     /* Adjust top padding to vertically center content */
     text-align: center;
     /* Center the text horizontally */
+    color: #ffffff;
 }
-
 .hero h2 {
     font-size: 3em;
     margin-bottom: 20px;

@@ -120,52 +120,9 @@ app.get("/guest", (req, res) => {
 app.get("/movie-info",checkAuthenticated, (req, res) => {
   res.render("movie-info");
 });
-
-// Route to handle guest creation
-app.post("/create-guest", async (req, res) => {
-  try {
-    const username = generateUsername();
-    const email = generateEmail(username);
-    const password = generatePassword();
-
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({
-      name: username,
-      email: email,
-      password: hashedPassword,
-    });
-    await user.save();
-    res.status(201).json({ username, email, password });
-  } catch (error) {
-    console.error("Error creating guest:", error);
-    res.status(500).json({ error: "Failed to create guest credentials" });
-  }
+app.get("/dummy",(req, res) => {
+  res.render("dummy");
 });
-
-// Function to generate a random username
-function generateUsername() {
-  const usernamePrefix = "guestuser";
-  const randomSuffix = Math.floor(Math.random() * 10000);
-  return usernamePrefix + randomSuffix;
-}
-
-// Function to generate a random email
-function generateEmail(username) {
-  return `${username}@googleguest.com`;
-}
-
-// Function to generate a random password
-function generatePassword() {
-  // Generate a random string of characters
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  const passwordLength = 8;
-  let password = '';
-  for (let i = 0; i < passwordLength; i++) {
-    const randomIndex = Math.floor(Math.random() * characters.length);
-    password += characters[randomIndex];
-  }
-  return password;
-}
 
 // Function to check if user is authenticated
 function checkAuthenticated(req, res, next) {

@@ -8,7 +8,35 @@
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
-       
+        .hero {
+            background-image: url('/images/back2.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #131720;
+            height: 100vh;
+            width: 100%;
+            overflow-y: auto;
+            position: relative;
+            transition: opacity 0.2s ease; /* Adjusted transition duration */
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            opacity: 1; /* Initially fully visible */
+            transition: opacity 0.2s ease; /* Adjusted transition duration */
+        }
+
+        .hero.hide {
+            opacity: 0; /* Hide the hero section */
+        }
+
+        .hero-content.hide {
+            opacity: 0; /* Hide the hero content */
+        }
     </style>
 </head>
 
@@ -28,7 +56,7 @@
                 <div class="cta-buttons">
                     <a href="/login" class="cta-button">Login</a>
                     <a href="/signup" class="cta-button">Sign Up</a>
-                    <a href="/guest" class="cta-button">Continue as Guest</a>
+                    <a href="/dummy" class="cta-button">Continue as Guest</a>
                 </div>
             </div>
         </section>
@@ -46,6 +74,27 @@
         <p>&copy; 2024 CineSurf. All rights reserved.</p>
     </footer>
     <script src="/scripts/main.js"></script>
+    <script>
+        window.addEventListener('scroll', function () {
+            const hero = document.querySelector('.hero');
+            const heroContent = document.querySelector('.hero-content');
+            const scrollPosition = window.pageYOffset;
+
+            // Calculate opacity based on scroll position
+            const opacity = 1 - (scrollPosition / window.innerHeight);
+            hero.style.opacity = opacity;
+            heroContent.style.opacity = opacity;
+
+            // Add 'hide' class when scrolled beyond certain point
+            if (scrollPosition > window.innerHeight * 0.5) {
+                hero.classList.add('hide');
+                heroContent.classList.add('hide');
+            } else {
+                hero.classList.remove('hide');
+                heroContent.classList.remove('hide');
+            }
+        });
+    </script>
 </body>
 
 </html>
