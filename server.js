@@ -1,144 +1,58 @@
 // Import necessary modules
 const express = require("express");
 const app = express();
-const bcrypt = require("bcrypt");
-const passport = require("passport");
-const initializePassport = require("./passport-config");
-const flash = require("express-flash");
-const session = require("express-session");
 const path = require('path');
-const methodOverride = require("method-override");
-const mongoose = require("mongoose");
+const connectDB = require("./db/databaseconnection"); // Import database connection
+const jwt = require("jsonwebtoken"); // Import JWT for token generation and verification
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+
+// Import routes
+const authRoutes = require("./routes/authRoutes");
+const mainRoutes = require("./routes/mainRoutes");
 
 // Configure view engine and static files
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Connect to MongoDB
-mongoose.connect("mongodb://0.0.0.0:27017/userauth", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log("MongoDB connected"))
-.catch((err) => console.error("MongoDB connection error:", err));
-
-// Define User model
-const User = mongoose.model("User", {
-  name: String,
-  email: String,
-  password: String,
-});
-
-// Initialize Passport
-initializePassport(
-  passport,
-  async (email) => {
-    return await User.findOne({ email: email }).exec();
-  },
-  async (id) => {
-    return await User.findById(id).exec();
-  }
-);
+connectDB();
 
 // Middleware
-app.use(express.urlencoded({ extended: false }));
-app.use(session({
-  secret: process.env.SESSION_SECRET || "your_secret_key",
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    secure: process.env.NODE_ENV === "production",
-    maxAge: 604800000, // 7 days in milliseconds
-  },
-}));
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash());
-app.use(methodOverride("_method"));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-// Routes
+// Use routes
+app.use("/", authRoutes);
+app.use("/", mainRoutes);
+
+// Middleware to verify JWT token
+function verifyToken(req, res, next) {
+  if (req.cookies.jwt) {
+    const token = req.cookies.jwt;
+    jwt.verify(token, "your_secret_key", (err, decodedToken) => {
+      if (err) {
+        console.error(err);
+        res.redirect("/login");
+      } else {
+        console.log("Decoded token:", decodedToken);
+        req.user = decodedToken; // Set the decoded user information in the request object
+        next();
+      }
+    });
+  } else {
+    res.redirect("/login");
+  }
+}
+
+// Protected route example
+app.get("/index", verifyToken, (req, res) => {
+  res.render("index", { name: req.user.name, email: req.user.email });
+});
+
 app.get("/", (req, res) => {
   res.render("main");
 });
-
-app.post("/login", passport.authenticate("local", {
-  successRedirect: "/index",
-  failureRedirect: "/login",
-  failureFlash: true,
-}));
-
-app.post("/signup", checkNotAuthenticated, async (req, res) => {
-  try {
-    const existingUser = await User.findOne({ email: req.body.email });
-    if (existingUser) {
-      req.flash('error', 'User with this email already exists');
-      return res.redirect("/signup");
-    }
-
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
-    const user = new User({
-      name: req.body.name,
-      email: req.body.email,
-      password: hashedPassword,
-    });
-    await user.save();
-    res.redirect("/login");
-  } catch (error) {
-    console.error("Error during signup:", error);
-    req.flash('error', 'Error during signup, please try again later');
-    res.redirect("/signup");
-  }
-});
-
-app.delete("/logout", (req, res) => {
-  req.logout((err) => {
-    if (err) {
-      console.error(err);
-      return res.redirect("/");
-    }
-    res.redirect("/");
-  });
-});
-
-app.get("/index", checkAuthenticated, (req, res) => {
-  res.render("index", { name: req.user.name, email: req.user.email }); 
-});
-
-app.get("/login", checkNotAuthenticated, (req, res) => {
-  res.render("login");
-});
-
-app.get("/signup", checkNotAuthenticated, (req, res) => {
-  res.render("signup");
-});
-
-// Route to render the guest.ejs view
-app.get("/guest", (req, res) => {
-  res.render("guest");
-});
-
-app.get("/movie-info",checkAuthenticated, (req, res) => {
-  res.render("movie-info");
-});
-app.get("/dummy",(req, res) => {
-  res.render("dummy");
-});
-
-// Function to check if user is authenticated
-function checkAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.redirect("/login");
-}
-
-// Function to check if user is not authenticated
-function checkNotAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    return res.redirect("/");
-  }
-  next();
-}
 
 // Start the server
 const PORT = process.env.PORT || 4000;

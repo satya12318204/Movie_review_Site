@@ -14,7 +14,7 @@
 
   <header class="header">
     <a href="/index" class="logo">CineSurf</a>
-  
+
     <nav class="navbar">
       <a href="#">Popular</a>
       <a href="#">Movies</a>
@@ -27,23 +27,29 @@
         <div class="user-info">
           <img src="/images/default-user-pic.png" alt="User Picture">
           <div class="user-details">
-            <span class="username"><%= name %></span>
+            <span class="username">
+              <%= name %>
+            </span>
           </div>
         </div>
         <div class="dropdown-content">
           <div class="user-details">
-            <span class="username"><%= name %></span>
-            <span class="email"><%= email %></span>
+            <span class="username">
+              <%= name %>
+            </span>
+            <span class="email">
+              <%= email %>
+            </span>
           </div>
           <form action="/logout?_method=DELETE" method="POST">
             <button type="submit">Logout</button>
           </form>
         </div>
       </div>
-      
+
     </nav>
   </header>
-  
+
 
   <div class="spacediv"></div>
 

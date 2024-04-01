@@ -13,8 +13,8 @@
 <body>
 
   <header class="header">
-    <a href="/dummy" class="logo">CineSurf</a>
-  
+    <a href="/" class="logo">CineSurf</a>
+
     <nav class="navbar">
       <a href="#">Popular</a>
       <a href="#">Movies</a>
@@ -31,10 +31,10 @@
           </div>
         </div>
       </div>
-      
+
     </nav>
   </header>
-  
+
 
   <div class="spacediv"></div>
 
@@ -57,7 +57,110 @@
   </main>
 
 
-  <script src="/scripts/index.js"></script>
+  <script>
+    const API_KEY = 'api_key=1a43f4f5121d723457a85e7db44e3404';
+    const BASE = 'https://api.themoviedb.org/3/';
+    const API_URL = `${BASE}discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&${API_KEY}`;
+    const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
+
+    const form = document.getElementById('form');
+
+    getMovies(API_URL);
+
+    function getMovies(url) {
+      fetch(url)
+        .then(res => res.json())
+        .then(data => {
+          console.log(data.results);
+          showMovies(data.results);
+        });
+    }
+    // Function to check if user is authenticated
+    function checkAuthenticated(req, res, next) {
+      if (req.isAuthenticated()) {
+        return next();
+      }
+      res.redirect("/login");
+    }
+
+    // Function to check if user is not authenticated
+    function checkNotAuthenticated(req, res, next) {
+      if (req.isAuthenticated()) {
+        return res.redirect("/");
+      }
+      next();
+    }
+    function showMovies(data) {
+      const mainElement = document.getElementById('main');
+
+      mainElement.innerHTML = '';
+
+      data.forEach(movie => {
+        const movieEl = document.createElement("div");
+        movieEl.classList.add('movie');
+        movieEl.innerHTML = `
+            <img src="${IMG_PATH}${movie.poster_path}" alt="${movie.title}">
+            <div class="movie-info">
+                <h3>${movie.title}</h3>
+                <span class="${getColor(movie.vote_average)}">${movie.vote_average}</span>
+            </div>
+            <div class="overview">
+                <h3>Overview</h3>
+                ${movie.overview}
+            </div>
+        `;
+        mainElement.appendChild(movieEl);
+        // Add event listener to each movie element
+        movieEl.addEventListener('click', () => {
+          alert("Please login to view more details about this movie.");
+          window.location.href = "/login"; // Redirect to the login page
+        });
+      });
+    }
+
+    function getColor(vote) {
+      if (vote >= 8) {
+        return 'green';
+      }
+
+      else if (vote >= 5) {
+        return 'orange';
+      }
+
+      else {
+        return 'red';
+      }
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const searchTerm = document.getElementById('query').value;
+
+      if (searchTerm) {
+        getMovies(`${BASE}search/movie?query=${searchTerm}&${API_KEY}`);
+      } else {
+        getMovies(API_URL);
+      }
+    });
+
+    app.get("/index", checkAuthenticated, async (req, res) => {
+      try {
+        const user = await User.findById(req.user._id);
+        if (user) {
+          res.render("index", { name: user.name, email: user.email });
+        } else {
+          res.redirect("/login");
+        }
+      } catch (error) {
+        console.error(error);
+        res.redirect("/login");
+      }
+    });
+
+
+
+
+  </script>
 </body>
 
 </html>

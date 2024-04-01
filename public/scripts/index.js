@@ -37,22 +37,22 @@ function showMovies(data) {
         `;
         mainElement.appendChild(movieEl);
         // Add event listener to each movie element
-            movieEl.addEventListener('click', () => {
-                window.location.href = "/movie-info";
-            });
+        movieEl.addEventListener('click', () => {
+            window.location.href = "/movie-info";
+        });
     });
 }
 
-function getColor(vote){
-    if (vote >= 8){
+function getColor(vote) {
+    if (vote >= 8) {
         return 'green';
     }
 
-    else if(vote >= 5){
+    else if (vote >= 5) {
         return 'orange';
     }
 
-    else{
+    else {
         return 'red';
     }
 }
@@ -60,27 +60,27 @@ function getColor(vote){
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     const searchTerm = document.getElementById('query').value;
-    
-    if(searchTerm) {
+
+    if (searchTerm) {
         getMovies(`${BASE}search/movie?query=${searchTerm}&${API_KEY}`);
     } else {
         getMovies(API_URL);
     }
 });
 
-app.get("/index", checkAuthenticated, async (req, res) => {
+app.get("/index", verifyToken, async (req, res) => {
     try {
-      const user = await User.findById(req.user._id);
-      if (user) {
-        res.render("index", { name: user.name, email: user.email });
-      } else {
-        res.redirect("/login");
-      }
+        const user = await User.findById(req.user._id);
+        if (user) {
+            res.render("index", { name: user.name, email: user.email });
+        } else {
+            res.redirect("/login");
+        }
     } catch (error) {
-      console.error(error);
-      res.redirect("/login");
+        console.error(error);
+        res.redirect("/login");
     }
-  });
-  
+});
 
-    
+
+
