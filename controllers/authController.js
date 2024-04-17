@@ -56,12 +56,36 @@ exports.login = async (req, res) => {
 
     const token = createToken(user._id);
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
-    res.redirect("/index");
+
+    // Check if the user is an admin
+    if (user.role === 'admin') {
+      // Send an alert for admin
+      return res.send(`
+        <script>
+          alert("Welcome, admin!");
+          window.location.href = '/index?admin=true';
+        </script>
+      `);
+    } 
+    // Check if the user is a superuser
+    else if (user.role === 'superuser') {
+      // Send an alert for superuser
+      return res.send(`
+        <script>
+          alert("Welcome, superuser!");
+          window.location.href = '/index?superuser=true';
+        </script>
+      `);
+    }
+    else {
+      res.redirect("/index");
+    }
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error" });
   }
 };
+
 
 
 // Handle logout

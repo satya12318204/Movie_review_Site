@@ -70,17 +70,23 @@ form.addEventListener('submit', (e) => {
 
 app.get("/index", verifyToken, async (req, res) => {
     try {
-        const user = await User.findById(req.user._id);
-        if (user) {
-            res.render("index", { name: user.name, email: user.email });
-        } else {
-            res.redirect("/login");
-        }
-    } catch (error) {
-        console.error(error);
+      const user = await User.findById(req.user._id);
+      if (user) {
+        const isAdmin = user.role === 'admin';
+        const isSuperUser = user.role === 'superuser';
+        res.render("index", { 
+          name: user.name, 
+          email: user.email,
+          isAdmin,
+          isSuperUser
+        });
+      } else {
         res.redirect("/login");
+      }
+    } catch (error) {
+      console.error(error);
+      res.redirect("/login");
     }
-});
-
-
+  });
+  
 
