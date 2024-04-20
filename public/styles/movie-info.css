@@ -1,0 +1,97 @@
+/* movie_details_styles.css */
+
+/* Body styles */
+body {
+    background-color: #131720;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Header styles */
+.header {
+    background-color: slateblue;
+    padding: 20px 100px;
+}
+
+.logo {
+    font-size: 32px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    position: relative;
+}
+
+.logo::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: width 0.3s ease;
+}
+
+.logo:hover::before {
+    width: 100%;
+}
+
+/* Movie details styles */
+.movie-details-info {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Change flex-direction to column */
+    align-items: center;
+    text-align: center;
+}
+
+#movie-poster {
+    width: 300px; /* Adjust the width as needed */
+    margin-bottom: 20px; /* Move the poster away from the overview */
+    margin-right: 900px;
+}
+
+.overview {
+    background-color: #22254b;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 0; /* Remove default margin */
+    flex: 1; /* Allow the overview to expand */
+    width: 100%; /* Ensure the overview fills the container */
+}
+
+.overview h3 {
+    margin-top: 0;
+    color: #fff; /* Adjust the color of the heading */
+}
+
+.reviews-button {
+    background-color: slateblue;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 900px;
+    position: relative; /* Add relative positioning */
+}
+
+/* Pseudo-element animation for button */
+.reviews-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0; /* Start with width 0 */
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    transition: width 0.3s ease;
+}
+
+.reviews-button:hover::before {
+    width: 100%; /* Expand to cover the button on hover */
+}
