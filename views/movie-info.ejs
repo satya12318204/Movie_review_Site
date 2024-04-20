@@ -58,8 +58,9 @@
 </div>
 
 <div>
-    <h1>Your review here</h1>
-    <textarea class="review_text_box" name="w3review" rows="10" cols="50" placeholder="Enter your Review here..."></textarea>
+  <h1>Your review here</h1>
+  <textarea id="reviewTextArea" class="review_text_box" name="w3review" rows="10" cols="50" placeholder="Enter your Review here..."></textarea>
+  <button id="submitReviewButton" class="reviews-button">Submit</button>
 </div>
 
 <script src="/scripts/movie_details_app.js"></script> <!-- Include the app.js file -->
@@ -77,6 +78,41 @@
             getYouTubeTrailer(movieTitle);
         }
     };
+
+    // Add an event listener to the submit button
+    document.getElementById('submitReviewButton').addEventListener('click', function() {
+        // Get the review text and movie title
+        const reviewText = document.getElementById('reviewTextArea').value;
+        const movieTitle = 'Your Movie Title'; // You can replace this with actual movie title retrieval logic
+
+        // Send an HTTP POST request to your server to store the review
+        fetch('/storeReview', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ movieTitle, reviewText }),
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Network response was not ok.');
+        })
+        .then(data => {
+            console.log(data.message); // Log the response from the server
+            // Optionally, you can display a success message to the user
+            alert('Review submitted successfully!');
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+            // Optionally, you can display an error message to the user
+            alert('There was a problem submitting your review. Please try again later.');
+        });
+        
+        // Clear the review text box
+        document.getElementById('reviewTextArea').value = '';
+    });
 </script>
 </body>
 </html>

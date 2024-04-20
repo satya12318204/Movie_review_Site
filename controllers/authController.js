@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const Review = require("../models/review"); 
 
 const maxAge = 3 * 24 * 60 * 60;
 
@@ -99,3 +100,17 @@ exports.logout = async (req, res) => {
   }
 };
 
+exports.storeReview = async (req, res) => {
+  try {
+    const { movieName, reviewText } = req.body;
+    const userId = req.user._id; // Get the user ID from the request object
+
+    const review = new Review({ userId, movieName, reviewText });
+    await review.save();
+
+    res.status(201).json({ message: "Review stored successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
