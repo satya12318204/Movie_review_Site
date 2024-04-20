@@ -1,47 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Under Development</title>
-
-    <link rel="icon" class="amrutha" href="/images/logo2.jpg" type="image/x-icon" />
+    <title>Movie Details</title>
+    <link rel="stylesheet" href="/styles/movie_details_styles.css"> <!-- Link to the movie details stylesheet -->
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .container {
-            text-align: center;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        p {
-            color: #666;
-        }
-
-        .amrutha {
-            border-radius: 200%;
+            background-color: #00000096;
         }
     </style>
 </head>
-
 <body>
-    <div class="container">
-        <h1>Page Under Development</h1>
-        <p>This page is currently under development. Please check back later.</p>
-    </div>
-</body>
 
+<header class="header">
+    <a href="/index" class="logo">CineSurf</a>
+</header>
+
+<div class="movie-details-container">
+    <div class="movie-details-info">
+        <div class="movie-poster-trailer">
+            <img src="" alt="Movie Poster" id="movie-poster">
+            <div class="overview" id="movie-overview">
+              <h3>Overview</h3>
+              <p>Placeholder text for overview</p>
+          </div>
+        </div>
+        <!-- <div id="trailer-container"></div> Move the trailer container inside movie-poster-trailer -->
+    </div>
+</div>
+
+<button class="reviews-button">Reviews</button>
+
+<script src="/scripts/movie_details_app.js"></script> <!-- Include the app.js file -->
+<script>
+    // On page load, extract movie details from URL parameters and populate the movie details
+    window.onload = function() {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const movieId = urlParams.get('id');
+        const movieTitle = urlParams.get('title');
+
+        if (movieId && movieTitle) {
+            // Call functions to fetch and display movie details
+            getMovieDetails(movieId);
+            getYouTubeTrailer(movieTitle);
+        }
+    };
+</script>
+</body>
 </html>

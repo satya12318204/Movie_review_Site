@@ -37,9 +37,15 @@ function showMovies(data) {
         `;
         mainElement.appendChild(movieEl);
         // Add event listener to each movie element
-        movieEl.addEventListener('click', () => {
-            window.location.href = "/movie-info";
-        });
+        // Inside the event listener for movie click
+movieEl.addEventListener('click', () => {
+    // Extract movie details
+    const movieId = movie.id;
+    const movieTitle = movie.title;
+    // Redirect to movie-info page with movie details as query parameters
+    window.location.href = `/movie-info?id=${movieId}&title=${encodeURIComponent(movieTitle)}`;
+});
+
     });
 }
 

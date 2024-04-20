@@ -1,0 +1,214 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.spacediv {
+  padding: 16px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding-top: 80px;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 100px;
+  background: linear-gradient(90deg, #ff416c, #ff4b2b);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  transition: background 0.5s;
+}
+
+.header:hover {
+  background: linear-gradient(90deg, #000000, #ff416c);
+}
+
+.logo {
+  font-size: 32px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  position: relative;
+}
+
+.logo::before {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #fff;
+  transition: width 0.3s ease;
+}
+
+.logo:hover::before {
+  width: 100%;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+.navbar a {
+  font-size: 18px;
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  margin-left: 40px;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.navbar a::before {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: #fff;
+  transition: width 0.3s ease;
+}
+
+.navbar a:hover::before {
+  width: 100%;
+}
+
+.navbar a:hover {
+  color: #f9f9f9;
+}
+
+.navbar form {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-left: 30px;
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+.navbar form input[type="search"] {
+  width: 0;
+  overflow: hidden;
+  transition: width 0.5s ease;
+  padding: 10px 30px 10px 10px; /* Adjusted padding */
+  border: 0;
+  border-radius: 20px;
+  font-size: 1em;
+  background: rgba(192, 180, 180, 0.5);
+}
+
+.navbar form i {
+  position: absolute;
+  top: 50%;
+  right: 0.25px;
+  transform: translateY(-50%);
+  color: red;
+  font-size: 15px;
+}
+
+.navbar form:hover input[type="search"] {
+  width: 150px;
+  padding: 8px 30px 8px 10px; /* Adjusted padding */
+}
+
+.navbar form:hover i {
+  right: 155px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* New styles for movie details container */
+.movie-details-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.movie-details-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.movie-poster-trailer {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 22px;
+}
+
+#movie-poster {
+  width: 300px;
+  height: auto;
+  border-radius: 8px; /* Add border-radius for rounded corners */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
+
+
+
+#trailer-container {
+  margin-left: 20px;
+}
+
+.overview {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.overview h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color:#fff;
+}
+
+.overview p {
+  font-size: 18px;
+  line-height: 1.6;
+  color:#fff;
+}
+
+.reviews-button {
+  background-color: #ff416c; /* Pink background */
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  font-size: 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+}
+
+.reviews-button:hover {
+  background-color: #ff4b2b; /* Darker pink on hover */
+}
+
+/* Pseudo-element animation for button */
+.reviews-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0; /* Start with width 0 */
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* End of new styles */
