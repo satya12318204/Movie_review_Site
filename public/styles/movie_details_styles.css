@@ -4,6 +4,9 @@
   padding: 16px;
 }
 
+h1 {
+  text-align: center;
+}
 * {
   margin: 0;
   padding: 0;
@@ -212,3 +215,79 @@ body {
 }
 
 /* End of new styles */
+
+.review_text_box {
+   width: 60%;
+   margin-left: 20%;
+   font-size: medium;
+   background-color: rgb(173, 173, 173);
+}
+
+.user-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.user-info img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.dropdown-content {
+  color: white;
+  display: none;
+  position: absolute;
+  background-color: #000000;
+  min-width: 200px;
+  box-shadow: 8px 8px 16px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  color: #333;
+}
+
+.dropdown-content a:hover {
+  background-color: #1411119c;
+}
+
+.user-dropdown:hover .dropdown-content {
+  display: block;
+}
+/* Unique Logout button CSS */
+nav .btn-logout-unique {
+  font-weight: bold;
+  padding: 0.8rem 1.5rem;
+  border: 2px solid #fff; /* White border */
+  background-color: transparent; /* Transparent background */
+  color: #fff; /* White text color */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+  text-transform: uppercase; /* Convert text to uppercase */
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+nav .btn-logout-unique:hover {
+  background-color: #fff; /* White background on hover */
+  color: rgb(111, 95, 212); /* Slateblue text color on hover */
+}
+
+nav .btn-logout-unique:focus {
+  outline: none; /* Remove focus outline */
+}
+
+/* Unique Logout button icon CSS */
+nav .btn-logout-unique i {
+  margin-right: 5px; /* Add some space between icon and text */
+}

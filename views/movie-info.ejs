@@ -15,6 +15,33 @@
 
 <header class="header">
     <a href="/index" class="logo">CineSurf</a>
+
+    
+    <div class="user-dropdown">
+        <div class="user-info">
+          <img src="/images/default-user-pic.png" alt="User Picture">
+          <div class="user-details">
+            <span class="username">
+              <%= name %>
+            </span>
+          </div>
+        </div>
+        <div class="dropdown-content">
+          <div class="user-details">
+            <span class="username">
+              <%= name %>
+            </span>
+            <span class="email">
+              <%= email %>
+            </span>
+          </div>
+          <form action="/logout?_method=DELETE" method="POST">
+            <button type="submit">Logout</button>
+          </form>
+        </div>
+      </div>
+
+
 </header>
 
 <div class="movie-details-container">
@@ -30,7 +57,10 @@
     </div>
 </div>
 
-<button class="reviews-button">Reviews</button>
+<div>
+    <h1>Your review here</h1>
+    <textarea class="review_text_box" name="w3review" rows="10" cols="50" placeholder="Enter your Review here..."></textarea>
+</div>
 
 <script src="/scripts/movie_details_app.js"></script> <!-- Include the app.js file -->
 <script>

@@ -93,6 +93,6 @@ app.get("/index", verifyToken, async (req, res) => {
       console.error(error);
       res.redirect("/login");
     }
-  });
+});
   
 
