@@ -37,20 +37,21 @@ async function getYouTubeTrailer(movieTitle) {
         trailerIframe.setAttribute('frameborder', '0');
         trailerIframe.setAttribute('allowfullscreen', '');
 
-        document.getElementById('trailer-container').appendChild(trailerIframe);
+        const trailerContainer = document.getElementById('trailer-container');
+        trailerContainer.innerHTML = ''; // Clear previous trailer (if any)
+        trailerContainer.appendChild(trailerIframe);
     } catch (error) {
         console.error('Error fetching YouTube trailer:', error);
     }
 }
 
-// Function to handle click event on movie elements
-function handleMovieClick(movieId, movieTitle) {
-    getMovieDetails(movieId);
-    getYouTubeTrailer(movieTitle);
-}
+
+
+
 
 // On page load, extract movie details from URL parameters and populate the movie details
 window.onload = async function() {
+
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const movieId = urlParams.get('id');
@@ -61,12 +62,39 @@ window.onload = async function() {
         await getMovieDetails(movieId);
         await getYouTubeTrailer(movieTitle);
     }
-}
+    
+    // Add an event listener to the submit button
+    document.getElementById('submitReviewButton').addEventListener('click', function() {
+        // Get the review text and movie title
+        const reviewText = document.getElementById('reviewTextArea').value;
+        const movieTitle = urlParams.get('title');
 
-// Example: Assuming you have a movie element with ID and Title attributes
-const movieElement = document.getElementById('your-movie-element-id');
-movieElement.addEventListener('click', function() {
-    const movieId = this.getAttribute('data-movie-id');
-    const movieTitle = this.getAttribute('data-movie-title');
-    handleMovieClick(movieId, movieTitle);
-});
+        // Send an HTTP POST request to your server to store the review
+        fetch('/storeReview', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ movieTitle, reviewText }),
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Network response was not ok.');
+        })
+        .then(data => {
+            console.log(data.message); // Log the response from the server
+            // Optionally, you can display a success message to the user
+            alert('Review submitted successfully!');
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+            // Optionally, you can display an error message to the user
+            alert('There was a problem submitting your review. Please try again later.');
+        });
+        
+        // Clear the review text box
+        document.getElementById('reviewTextArea').value = '';
+    });
+};

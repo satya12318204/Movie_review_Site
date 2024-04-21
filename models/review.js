@@ -1,6 +1,6 @@
 // Review.js
 const mongoose = require("mongoose");
-
+const User = require("./User.js");
 const reviewSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -8,7 +8,7 @@ const reviewSchema = new mongoose.Schema({
     required: true
   },
   movieName: {
-    type: String,
+    type: String, // Assuming movie name is a string
     required: true
   },
   reviewText: {

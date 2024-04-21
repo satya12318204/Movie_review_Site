@@ -102,10 +102,10 @@ exports.logout = async (req, res) => {
 
 exports.storeReview = async (req, res) => {
   try {
-    const { movieName, reviewText } = req.body;
-    const userId = req.user._id; // Get the user ID from the request object
+    const userId = req.user.id; // Extract userId from authenticated user
+    const { movieTitle, reviewText } = req.body;
 
-    const review = new Review({ userId, movieName, reviewText });
+    const review = new Review({ userId, movieTitle, reviewText });
     await review.save();
 
     res.status(201).json({ message: "Review stored successfully" });

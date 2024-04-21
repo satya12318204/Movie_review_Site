@@ -3,6 +3,8 @@ const router = express.Router();
 const authController = require("../controllers/authController");
 const verifyToken = require("../middleware/authMiddleware");
 const User = require("../models/User"); // Corrected import statement
+const Review = require('../models/review');
+const jwt = require('jsonwebtoken');
 
 router.get('/login', (req, res) => {
     res.render('login.ejs');
@@ -46,9 +48,55 @@ router.get("/movie-info", verifyToken, async (req, res) => {
 
 
 
+
+router.post('/storeReview', async (req, res) => {
+    try {
+        // Extract user ID from the authenticated user (assuming it's available in req.user)
+        const token = req.cookies.jwt;
+
+        if (!token) {
+            return res.status(401).json({ success: false, message: "Unauthorised" });
+        }
+
+        const decodedToken = jwt.verify(token, 'your_secret_key');
+
+        const username = decodedToken.username;
+
+        const userObj = await User.findOne({ username });
+
+        const userId = userObj._id;
+
+        console.log(req.body);
+        // Extract movie title and review text from the request body
+        const { movieTitle, reviewText } = req.body;
+
+        // Create a new review instance
+        const review = new Review({
+            userId,
+            movieName: movieTitle,
+            reviewText
+        });
+
+        // Save the review to the database
+        await review.save();
+
+        // Send a success response
+        res.status(200).json({ message: 'Review submitted successfully!' });
+    } catch (error) {
+        // Handle errors
+        console.error('Error storing review:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+
+
+
+
+
 router.post("/signup", authController.signup);
 router.post("/login", authController.login);
 router.post("/logout", authController.logout);
-router.post("storeReview",authController.storeReview);
+
 
 module.exports = router;
