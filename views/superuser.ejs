@@ -1,0 +1,28 @@
+<!-- superuser.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superuser Portal</title>
+</head>
+<body>
+    <h1>Welcome Superuser!</h1>
+    <!-- Display all reviews -->
+    <h2>All Reviews:</h2>
+    <ul>
+        <% reviews.forEach(review => { %>
+            <li><%= review.username %> : <%= review.movieName %> : <%= review.reviewText %></li>
+        <% }); %>
+    </ul>
+
+    <!-- Display all user details -->
+    <h2>All User Details:</h2>
+    <ul>
+        <% users.forEach(user => { %>
+            <li><%= user.name %> : <%= user.email %> : <%= user.role %></li>
+        <% }); %>
+    </ul>
+</body>
+</html>

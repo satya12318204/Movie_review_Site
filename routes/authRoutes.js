@@ -49,7 +49,7 @@ router.get("/movie-info", verifyToken, async (req, res) => {
 
 
 
-router.post('/storeReview', async (req, res) => {
+/*router.post('/storeReview', async (req, res) => {
     try {
         // Extract user ID from the authenticated user (assuming it's available in req.user)
         const token = req.cookies.jwt;
@@ -87,7 +87,34 @@ router.post('/storeReview', async (req, res) => {
         console.error('Error storing review:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
+});*/
+router.post('/storeReview', verifyToken, async (req, res) => {
+    try {
+        // Extract user ID from the authenticated user
+        const userId = req.user.id;
+
+        // Extract movie title and review text from the request body
+        const { movieTitle, reviewText } = req.body;
+
+        // Create a new review instance
+        const review = new Review({
+            userId,
+            movieName: movieTitle,
+            reviewText
+        });
+
+        // Save the review to the database
+        await review.save();
+
+        // Send a success response
+        res.status(200).json({ message: 'Review submitted successfully!' });
+    } catch (error) {
+        // Handle errors
+        console.error('Error storing review:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
 });
+
 
 
 
