@@ -7,7 +7,7 @@ const maxAge = 3 * 24 * 60 * 60;
 
 // Function to create JWT token
 const createToken = (id) => {
-  return jwt.sign({ id }, "your_secret_key", {
+  return jwt.sign({  userId : id }, "your_secret_key", {
     expiresIn: maxAge,
   });
 };

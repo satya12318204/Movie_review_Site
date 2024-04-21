@@ -17,7 +17,7 @@ router.get('/signup', (req, res) => {
 router.get("/index", verifyToken, async (req, res) => {
     try {
         // Get user ID from the decoded JWT token
-        const userId = req.user.id;
+        const userId = req.user._id;
 
         // Fetch user details from the database based on the ID
         const user = await User.findById(userId); // Corrected variable name to avoid conflict with imported module
@@ -46,48 +46,6 @@ router.get("/movie-info", verifyToken, async (req, res) => {
 });
 
 
-
-
-
-/*router.post('/storeReview', async (req, res) => {
-    try {
-        // Extract user ID from the authenticated user (assuming it's available in req.user)
-        const token = req.cookies.jwt;
-
-        if (!token) {
-            return res.status(401).json({ success: false, message: "Unauthorised" });
-        }
-
-        const decodedToken = jwt.verify(token, 'your_secret_key');
-
-        const username = decodedToken.username;
-
-        const userObj = await User.findOne({ username });
-
-        const userId = userObj._id;
-
-        console.log(req.body);
-        // Extract movie title and review text from the request body
-        const { movieTitle, reviewText } = req.body;
-
-        // Create a new review instance
-        const review = new Review({
-            userId,
-            movieName: movieTitle,
-            reviewText
-        });
-
-        // Save the review to the database
-        await review.save();
-
-        // Send a success response
-        res.status(200).json({ message: 'Review submitted successfully!' });
-    } catch (error) {
-        // Handle errors
-        console.error('Error storing review:', error);
-        res.status(500).json({ error: 'Internal server error' });
-    }
-});*/
 router.post('/storeReview', verifyToken, async (req, res) => {
     try {
         // Extract user ID from the authenticated user
@@ -114,10 +72,6 @@ router.post('/storeReview', verifyToken, async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 });
-
-
-
-
 
 
 

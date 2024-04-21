@@ -1,17 +1,19 @@
-
 const jwt = require("jsonwebtoken");
+const User = require("../models/User"); // Import the User model
 
-function verifyToken(req, res, next) {
+async function verifyToken(req, res, next) {
   try {
     if (req.cookies.jwt) {
       const token = req.cookies.jwt;
-      jwt.verify(token, "your_secret_key", (err, decodedToken) => {
+      jwt.verify(token, "your_secret_key", async (err, decodedToken) => {
         if (err) {
           console.error(err);
           res.redirect("/login");
         } else {
           console.log("Decoded token:", decodedToken);
-          req.user = decodedToken; // Set the decoded user information in the request object
+
+          const { userId } = decodedToken;
+          req.user = await User.findOne({ _id: userId }); // Await the result
           next();
         }
       });
@@ -25,4 +27,3 @@ function verifyToken(req, res, next) {
 }
 
 module.exports = verifyToken;
-
