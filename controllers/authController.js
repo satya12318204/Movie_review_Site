@@ -60,26 +60,29 @@ exports.login = async (req, res) => {
 
     // Check if the user is an admin
     if (user.role === 'admin') {
+      res.cookie("adminjwt", token, { httpOnly: true, maxAge: maxAge * 5000 });
       // Send an alert for admin
       return res.send(`
         <script>
           alert("Welcome, admin!");
-          window.location.href = '/index?admin=true';
+          window.location.href = '/index?admin=true';    
         </script>
       `);
     } 
     // Check if the user is a superuser
     else if (user.role === 'superuser') {
+      res.cookie("superjwt", token, { httpOnly: true, maxAge: maxAge * 3000 });
       // Send an alert for superuser
       return res.send(`
         <script>
           alert("Welcome, superuser!");
-          window.location.href = '/index?superuser=true';
+          window.location.href = '/superuser?superuser=true';
         </script>
       `);
     }
     else {
       res.redirect("/index");
+      res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
     }
   } catch (error) {
     console.error(error);

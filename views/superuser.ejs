@@ -155,9 +155,6 @@
         cursor: pointer;
         float: right; /* Align to the right */
       }
-      *{
-        text-align: center;
-      }
     </style>
   </head>
   <body>
@@ -221,7 +218,9 @@
         </tr>
       </table>
     </div>
-    <a href="/index?superuser=true">back</a>
+    <form action="/superlogout?_method=DELETE" method="POST">
+      <button type="submit">Logout</button>
+    </form>
 
     <script>
       const reviewsContainer = document.getElementById("reviewsContainer");
