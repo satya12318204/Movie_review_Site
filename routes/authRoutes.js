@@ -6,6 +6,8 @@ const User = require("../models/User"); // Corrected import statement
 const Review = require('../models/review');
 const jwt = require('jsonwebtoken');
 
+const mongoose = require("mongoose");
+
 router.get('/login', (req, res) => {
     res.render('login.ejs');
 });
@@ -42,6 +44,30 @@ router.get("/movie-info", verifyToken, async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Server error" });
+    }
+});
+
+// Route to fetch reviews based on movie name
+router.get("/movie-reviews", async (req, res) => {
+    try {
+        const movieName = req.query.movieName;
+        const reviews = await Review.find({ movieName }).populate('userId', 'name'); // Populate user details with only the 'name' field
+
+        res.json(reviews);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Server error" });
+    }
+});
+
+router.get('/users/:userId', async (req, res) => {
+    try {
+        const userId = req.params.userId;
+        const user = await User.findOne({ '_id': userId });
+        res.json(user); // Send the entire user object
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal Server Error' });
     }
 });
 

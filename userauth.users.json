@@ -1,0 +1,60 @@
+[{
+  "_id": {
+    "$oid": "661af9b15039f40a13ada4da"
+  },
+  "name": "perisetty satya amrutha raja",
+  "email": "satya@gmail.com",
+  "password": "$2b$10$hxFdrF7pHpkwMt17bu8GpOSO2aMOkSOf.APW8CtPqOTVBmWgNXlxO",
+  "role": "guest",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "661e4f94a023d5707c1a3039"
+  },
+  "name": "Admin",
+  "email": "Admin01@gmail.com",
+  "password": "$2b$10$U98QJBBBi9KOwj7tytztU.r.NN.56DZaWsN/wOSjYUi3Bi9Lkdmqu",
+  "role": "admin",
+  "__v ": 0
+},
+{
+  "_id": {
+    "$oid": "661e51f134f822f8e359ab04"
+  },
+  "name": "abhilash",
+  "email": "alash@gmail.com",
+  "password": "$2b$10$.QREQiB6fhyhsytzty94BOxTJJoMEWzvHIgci6A1b3G7Cblx6XvSq",
+  "role": "superuser",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "661e6364ff22a7e82fd171c8"
+  },
+  "name": "abhishek",
+  "email": "abhishek@gmail.com",
+  "password": "$2b$10$.OpN0KW.5j2LogHvnmlwyeRop8Cx9Qkms2Ng45bejHhyK.3RzoGk2",
+  "role": "superuser",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "661fdb84e5b9db07adc08b70"
+  },
+  "name": "SATYA",
+  "email": "perisettyraja@gmail.com",
+  "password": "$2b$10$.OAYx0iZqv2sOnck4zVweeh7GeUVxMEQ2txcfrRzHrNUovG7mG3Uu",
+  "role": "normaluser",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66264461d72fb51ed3370748"
+  },
+  "name": "cinesurf",
+  "email": "cinesurf@gmail.com",
+  "password": "$2b$10$ydES3jRcWW4N1CzXbLf1vOmRoBAFE4SHUY/7k.06VwPrNzLzZfqNK",
+  "role": "normaluser",
+  "__v": 0
+}]

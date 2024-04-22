@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Superuser Portal</title>
+    <title>Admin Portal</title>
     <style>
       /* Global Reset */
       * {
@@ -161,7 +161,7 @@
     </style>
   </head>
   <body>
-    <h1>Welcome Superuser!</h1>
+    <h1>Welcome Admin!</h1>
     <div class="container">
       <div class="reviews-container" id="reviewsContainer">
         <h2>All Reviews:</h2>
@@ -190,8 +190,8 @@
             <div class="users-container" id="userListContainer">
               <h2>All User Details:</h2>
               <div id="userList">
-                <% users.forEach(user => { %> <% if (user.role !== 'superuser')
-                { %>
+                <% users.forEach(user => { %> <% if (user.role !== 'superuser'
+                && user.role !== 'admin') { %>
                 <button class="user-button" data-user-id="<%= user._id %>">
                   <%= user.name %>
                 </button>
@@ -210,8 +210,6 @@
             <form id="updateUserRoleForm">
               <label for="role">Update User Role:</label>
               <select id="role" name="role">
-                <option value="admin">Admin</option>
-                <option value="superuser">Superuser</option>
                 <option value="normaluser">Normal User</option>
                 <option value="guest">Guest</option>
               </select>

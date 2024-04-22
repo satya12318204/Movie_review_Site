@@ -22,6 +22,24 @@ body {
   padding-top: 80px;
 }
 
+.review-box {
+  background-color: #ffffff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  width: 60%;
+  margin : 0 auto;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.review-content {
+  font-size: 16px;
+/* This will center align the element */
+}
+
+
+
 .header {
   position: fixed;
   top: 0;

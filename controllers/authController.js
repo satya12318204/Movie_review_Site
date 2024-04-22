@@ -65,7 +65,7 @@ exports.login = async (req, res) => {
       return res.send(`
         <script>
           alert("Welcome, admin!");
-          window.location.href = '/index?admin=true';    
+          window.location.href = '/admin?admin=true';    
         </script>
       `);
     } 
@@ -82,7 +82,6 @@ exports.login = async (req, res) => {
     }
     else {
       res.redirect("/index");
-      res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
     }
   } catch (error) {
     console.error(error);

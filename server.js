@@ -10,6 +10,8 @@ app.use(cookieParser());
 const authRoutes = require("./routes/authRoutes");
 const mainRoutes = require("./routes/mainRoutes");
 const superuserRoutes = require("./routes/superuserRoutes");
+const adminRoutes = require("./routes/adminRoutes");
+
 
 // Configure view engine and static files
 app.set("view engine", "ejs");
@@ -25,7 +27,8 @@ app.use(express.json());
 // Use routes
 app.use("/", authRoutes);
 app.use("/", mainRoutes);
-app.use("/",superuserRoutes)
+app.use("/",superuserRoutes);
+app.use("/",adminRoutes);
 
 // Start the server
 const PORT = process.env.PORT || 4000;
