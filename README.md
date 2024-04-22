@@ -3,7 +3,7 @@ open the terminal and run node server.js on the terminal to run pages dynamicall
 or run nodemon server.js on the cmd 
 
 
-please export these tow files
+please export these two files
 
 userauth.reviews.json
 userauth.users.json
