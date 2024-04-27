@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
   name: String,
   email: String,
   password: String,
-  role: { type: String, enum: ['admin', 'superuser', 'normaluser', 'guest'], default: 'normaluser' } // Add role field
+  role: { type: String, enum: ['admin', 'superuser', 'normaluser', 'guest'], default: 'normaluser' } 
 });
 
 // Export User model

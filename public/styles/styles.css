@@ -166,26 +166,17 @@ body {
   background: rgba(255, 255, 255, 0.5);
 }
 
-#form i.fa-search::before {
-  content: "\f002";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  left: 5px;
-  transform: translate(-100%, -50%);
-  color: rgb(255, 255, 255);
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  font-size: 15px;
-}
-
 #form i.fa-search {
   position: absolute;
   top: 50%;
-  right: 0.25px;
+  right: 5px; /* Adjust the position to be static */
   transform: translateY(-50%);
-  color: red;
+  color: rgb(255, 255, 255);
   font-size: 15px;
+}
+
+#form i.fa-search:hover {
+  cursor: pointer;
 }
 
 #form:hover #query {
@@ -193,11 +184,23 @@ body {
   padding: 8px 30px 8px 10px; /* Adjusted padding */
 }
 
-#form:hover i.fa-search {
-  right: 155px;
-  cursor: pointer;
-  font-size: 18px;
+#form input[type="search"] {
+  width: 150px; /* Set an initial width */
+  overflow: hidden;
+  transition: width 0.5s ease; /* Keep the transition */
+  padding: 10px 30px 10px 10px; /* Adjusted padding */
+  border: 0;
+  color: #ffffff9c;
+  border-radius: 20px;
+  font-size: 1em;
+  background: rgb(0, 0, 0);
 }
+
+#form:hover input[type="search"] {
+  width: 200px; /* Increase the width on hover */
+  padding: 8px 30px 8px 10px; /* Adjusted padding */
+}
+
 
 main {
   display: flex;

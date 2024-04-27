@@ -56,7 +56,7 @@ exports.login = async (req, res) => {
     }
 
     const token = createToken(user._id);
-    res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
+    res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 2000 });
 
     // Check if the user is an admin
     if (user.role === 'admin') {
@@ -81,6 +81,7 @@ exports.login = async (req, res) => {
       `);
     }
     else {
+      res.cookie("userjwt", token, { httpOnly: true, maxAge: maxAge * 6000 });
       res.redirect("/index");
     }
   } catch (error) {

@@ -70,6 +70,9 @@ router.delete('/reviews/:reviewId', async (req, res) => {
   });
 
   router.get("/superuser", verifyToken, superuserController.renderSuperUserPortalPage);
+
+
+  
   router.post("/superlogout", superuserController.superlogout);
 
   module.exports = router;

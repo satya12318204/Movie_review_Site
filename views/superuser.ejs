@@ -158,6 +158,30 @@
       form{
         text-align: center;
       }
+      form[action="/superlogout?_method=DELETE"] {
+        text-align: center;
+        text-decoration: none;
+      }
+      .centered-link {
+        text-align: center;
+        margin-top: 20px; /* Adjust the margin as needed */
+      }
+      form[action="/superlogout?_method=DELETE"] button[type="submit"] {
+        margin-top: 20px; /* Adjust margin as needed */
+        padding: 10px 20px; /* Adjust padding as needed */
+        border-radius: 5px;
+        background-color: #ff6347; /* Coral color */
+        color: #fff; /* White text color */
+        border: none;
+        cursor: pointer;
+        outline: none;
+        transition: background-color 0.3s;
+      }
+      
+      form[action="/superlogout?_method=DELETE"] button[type="submit"]:hover {
+        background-color: #ff483d; /* Darker coral color on hover */
+      }
+      
     </style>
   </head>
   <body>
@@ -221,6 +245,10 @@
         </tr>
       </table>
     </div>
+    <div class="centered-link">
+      <a href="/index" class="homepageR">Home</a>
+    </div>
+    
     <form action="/superlogout?_method=DELETE" method="POST">
       <button type="submit">Logout</button>
     </form>

@@ -22,6 +22,7 @@ exports.renderSuperUserPortalPage = async (req, res) => {
         res.status(500).send("Internal Server Error");
     }
   };
+  
   exports.superlogout = async (req, res) => {
     try {
       await res.clearCookie("superjwt"),res.clearCookie("jwt");

@@ -157,10 +157,32 @@
       }
       form{
         text-align: center;
+        text-decoration: none;
       }
+      .centered-link {
+        text-align: center;
+        margin-top: 20px; /* Adjust the margin as needed */
+      }
+      form[action="/adminlogout?_method=DELETE"] button[type="submit"] {
+        margin-top: 20px; /* Adjust margin as needed */
+        padding: 10px 20px; /* Adjust padding as needed */
+        border-radius: 5px;
+        background-color: #ff6347; /* Coral color */
+        color: #fff; /* White text color */
+        border: none;
+        cursor: pointer;
+        outline: none;
+        transition: background-color 0.3s;
+      }
+      
+      form[action="/adminlogout?_method=DELETE"] button[type="submit"]:hover {
+        background-color: #ff483d; /* Darker coral color on hover */
+      }
+      
     </style>
   </head>
   <body>
+    
     <h1>Welcome Admin!</h1>
     <div class="container">
       <div class="reviews-container" id="reviewsContainer">
@@ -219,7 +241,13 @@
         </tr>
       </table>
     </div>
-    <form action="/superlogout?_method=DELETE" method="POST">
+     
+    <div class="centered-link">
+      <a href="/index" class="homepageR">Home</a>
+    </div>
+    
+    <form action="/adminlogout?_method=DELETE" method="POST">
+      
       <button type="submit">Logout</button>
     </form>
 
