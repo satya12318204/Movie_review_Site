@@ -6,24 +6,36 @@
         const IMG_PATH = "https://image.tmdb.org/t/p/w1280";
 
         try {
-          const response = await fetch(`${BASE}movie/${movieId}?${API_KEY}`);
-          const data = await response.json();
-
-          const posterPath = data.poster_path
-            ? IMG_PATH + data.poster_path
-            : "placeholder_poster.jpg"; // Use a placeholder if no poster available
-          const movieOverview = data.overview
-            ? data.overview
-            : "No overview available";
-          document.getElementById("movie-poster").src = posterPath;
-          document
-            .getElementById("movie-overview")
-            .getElementsByTagName("p")[0].textContent = movieOverview;
-        } catch (error) {
-          console.error("Error fetching movie details:", error);
-        }
+          const movieResponse = await fetch(`${BASE}movie/${movieId}?${API_KEY}`);
+          const tvResponse = await fetch(`${BASE}tv/${movieId}?${API_KEY}`);
+      
+          const movieData = await movieResponse.json();
+          const tvData = await tvResponse.json();
+      
+          if (movieData && movieData.poster_path) {
+              // Display movie details
+              const moviePosterPath = movieData.poster_path ? IMG_PATH + movieData.poster_path : "placeholder_poster.jpg";
+              const movieOverview = movieData.overview ? movieData.overview : "No overview available";
+              document.getElementById("movie-poster").src = moviePosterPath;
+              document.getElementById("movie-overview").getElementsByTagName("p")[0].textContent = movieOverview;
+          } else if (tvData && tvData.poster_path) {
+              // Display TV show details if no movie details found
+              const tvPosterPath = tvData.poster_path ? IMG_PATH + tvData.poster_path : "placeholder_poster.jpg";
+              const tvOverview = tvData.overview ? tvData.overview : "No overview available";
+              document.getElementById("movie-poster").src = tvPosterPath;
+              document.getElementById("movie-overview").getElementsByTagName("p")[0].textContent = tvOverview;
+          } else {
+              // Handle case where neither movie nor TV show details are found
+              document.getElementById("movie-poster").src = "placeholder_poster.jpg";
+              document.getElementById("movie-overview").getElementsByTagName("p")[0].textContent = "No details available";
+          }
+      } catch (error) {
+          console.error("Error fetching movie or TV show details:", error);
+      }
+      
       }
 
+      
       // Function to fetch and display YouTube trailer based on movie title
       async function getYouTubeTrailer(movieTitle) {
         const YOUTUBE_API_KEY = "AIzaSyDj1WRkLEAgAob-kIW6whCeY3-BVFpRW3I";
