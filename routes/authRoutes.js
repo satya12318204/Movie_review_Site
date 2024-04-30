@@ -96,12 +96,38 @@ router.post('/storeReview', verifyToken, async (req, res) => {
         const userId = req.user.id;
 
         // Extract movie title and review text from the request body
-        const { movieTitle, reviewText } = req.body;
+        const { tvTitle, reviewText } = req.body;
 
         // Create a new review instance
         const review = new Review({
             userId,
-            movieName: movieTitle,
+            movieName: tvTitle,
+            reviewText
+        });
+
+        // Save the review to the database
+        await review.save();
+
+        // Send a success response
+        res.status(200).json({ message: 'Review submitted successfully!' });
+    } catch (error) {
+        // Handle errors
+        console.error('Error storing review:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+router.post('/storetvReview', verifyToken, async (req, res) => {
+    try {
+        // Extract user ID from the authenticated user
+        const userId = req.user.id;
+
+        // Extract TV show title and review text from the request body
+        const { tvTitle, reviewText } = req.body; // Changed from movieTitle to tvTitle
+
+        // Create a new review instance
+        const review = new Review({
+            userId,
+            tvName: tvTitle, // Changed from movieName to tvName
             reviewText
         });
 
@@ -117,6 +143,17 @@ router.post('/storeReview', verifyToken, async (req, res) => {
     }
 });
 
+router.get("/tvshow-reviews", async (req, res) => {
+    try {
+        const tvName = req.query.tvName; // Changed from movieName to tvName
+        const reviews = await Review.find({ tvName }).populate('userId', 'name'); // Changed from movieName to tvName
+
+        res.json(reviews);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Server error" });
+    }
+});
 
 
 router.post("/signup", authController.signup);

@@ -14,20 +14,34 @@ async function getMovieDetails(movieId) {
 
     if (movieData && movieData.poster_path) {
       // Display movie details
-      const moviePosterPath = movieData.poster_path ? IMG_PATH + movieData.poster_path : "placeholder_poster.jpg";
-      const movieOverview = movieData.overview ? movieData.overview : "No overview available";
+      const moviePosterPath = movieData.poster_path
+        ? IMG_PATH + movieData.poster_path
+        : "placeholder_poster.jpg";
+      const movieOverview = movieData.overview
+        ? movieData.overview
+        : "No overview available";
       document.getElementById("movie-poster").src = moviePosterPath;
-      document.getElementById("movie-overview").getElementsByTagName("p")[0].textContent = movieOverview;
+      document
+        .getElementById("movie-overview")
+        .getElementsByTagName("p")[0].textContent = movieOverview;
     } else if (tvData && tvData.poster_path) {
       // Display TV show details if no movie details found
-      const tvPosterPath = tvData.poster_path ? IMG_PATH + tvData.poster_path : "placeholder_poster.jpg";
-      const tvOverview = tvData.overview ? tvData.overview : "No overview available";
+      const tvPosterPath = tvData.poster_path
+        ? IMG_PATH + tvData.poster_path
+        : "placeholder_poster.jpg";
+      const tvOverview = tvData.overview
+        ? tvData.overview
+        : "No overview available";
       document.getElementById("movie-poster").src = tvPosterPath;
-      document.getElementById("movie-overview").getElementsByTagName("p")[0].textContent = tvOverview;
+      document
+        .getElementById("movie-overview")
+        .getElementsByTagName("p")[0].textContent = tvOverview;
     } else {
       // Handle case where neither movie nor TV show details are found
       document.getElementById("movie-poster").src = "placeholder_poster.jpg";
-      document.getElementById("movie-overview").getElementsByTagName("p")[0].textContent = "No details available";
+      document
+        .getElementById("movie-overview")
+        .getElementsByTagName("p")[0].textContent = "No details available";
     }
   } catch (error) {
     console.error("Error fetching movie or TV show details:", error);
@@ -85,14 +99,22 @@ async function getTVShowDetails(tvId) {
 
     if (tvData && tvData.poster_path) {
       // Display TV show details
-      const tvPosterPath = tvData.poster_path ? IMG_PATH + tvData.poster_path : "placeholder_poster.jpg";
-      const tvOverview = tvData.overview ? tvData.overview : "No overview available";
+      const tvPosterPath = tvData.poster_path
+        ? IMG_PATH + tvData.poster_path
+        : "placeholder_poster.jpg";
+      const tvOverview = tvData.overview
+        ? tvData.overview
+        : "No overview available";
       document.getElementById("tv-show-poster").src = tvPosterPath;
-      document.getElementById("tv-show-overview").getElementsByTagName("p")[0].textContent = tvOverview;
+      document
+        .getElementById("tv-show-overview")
+        .getElementsByTagName("p")[0].textContent = tvOverview;
     } else {
       // Handle case where TV show details are not found
       document.getElementById("tv-show-poster").src = "placeholder_poster.jpg";
-      document.getElementById("tv-show-overview").getElementsByTagName("p")[0].textContent = "No details available";
+      document
+        .getElementById("tv-show-overview")
+        .getElementsByTagName("p")[0].textContent = "No details available";
     }
   } catch (error) {
     console.error("Error fetching TV show details:", error);
@@ -173,10 +195,7 @@ window.onload = async function () {
           window.location.reload();
         })
         .catch((error) => {
-          console.error(
-            "There was a problem with the fetch operation:",
-            error
-          );
+          console.error("There was a problem with the fetch operation:", error);
           // Optionally, you can display an error message to the user
           alert(
             "There was a problem submitting your review. Please try again later."

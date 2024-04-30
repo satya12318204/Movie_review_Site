@@ -399,6 +399,7 @@ footer {
   .footer{
     background-color: #24262b;
       padding: 70px 0;
+      position: bottom;
   }
   .footer-col{
      width: 25%;
