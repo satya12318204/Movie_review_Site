@@ -50,7 +50,7 @@ async function getMovieDetails(movieId) {
 
 // Function to fetch and display YouTube trailer based on movie title
 async function getYouTubeTrailer(movieTitle) {
-  const YOUTUBE_API_KEY = "AIzaSyDj1WRkLEAgAob-kIW6whCeY3-BVFpRW3I";
+  const YOUTUBE_API_KEY = "AIzaSyDlhoIW7bBLq25IbIfiQiS4F_yflR9iLNU";//   AIzaSyDj1WRkLEAgAob-kIW6whCeY3-BVFpRW3I
   const searchQuery = encodeURIComponent(movieTitle + " trailer");
   const YOUTUBE_SEARCH_URL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${searchQuery}&key=${YOUTUBE_API_KEY}`;
 
