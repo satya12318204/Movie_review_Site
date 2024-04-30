@@ -16,6 +16,7 @@ router.get('/signup', (req, res) => {
     res.render('signup.ejs');
 });
 
+
 router.get("/index", verifyToken, async (req, res) => {
     try {
         // Get user ID from the decoded JWT token
@@ -41,6 +42,23 @@ router.get("/movie-info", verifyToken, async (req, res) => {
 
         // Render the index page with the user's details
         res.render("movie-info", { name: user.name, email: user.email });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Server error" });
+    }
+});
+
+
+router.get("/tv-show-info", verifyToken, async (req, res) => {
+    try {
+        // Get user ID from the decoded JWT token
+        const userId = req.user.id;
+
+        // Fetch user details from the database based on the ID
+        const user = await User.findById(userId); // Corrected variable name to avoid conflict with imported module
+
+        // Render the index page with the user's details
+        res.render("tv-shows-info", { name: user.name, email: user.email });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Server error" });
