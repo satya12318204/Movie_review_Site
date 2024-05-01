@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const adminController = require("../controllers/adminController");
-const verifyToken = require("../middleware/authMiddleware");
+const verifyToken = require("../middleware/adminMiddelware");
 const User = require("../models/User"); // Corrected import statement
 const Review = require('../models/review');
 const jwt = require('jsonwebtoken');

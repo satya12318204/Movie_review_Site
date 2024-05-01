@@ -1,12 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const superuserController = require("../controllers/superuserController");
-const verifyToken = require("../middleware/authMiddleware");
+const verifyToken = require("../middleware/supermiddleware");
 const User = require("../models/User"); // Corrected import statement
 const Review = require('../models/review');
 const jwt = require('jsonwebtoken');
 
-
+const ChineseWall = require('../ChineseWall');
+const chineseWall = new ChineseWall();
 router.get('/users/:userId', async (req, res) => {
     try {
       const userId = req.params.userId;

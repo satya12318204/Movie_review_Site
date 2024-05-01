@@ -1,6 +1,6 @@
 const Review = require("../models/review");
 const User = require("../models/User");
-
+const ChineseWall = require('../ChineseWall');
 
 exports.renderAdminPortalPage = async (req, res) => {
     try {
@@ -32,3 +32,4 @@ exports.renderAdminPortalPage = async (req, res) => {
       res.status(500).json({ message: "Error logging out" });
     }
   };
+  

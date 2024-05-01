@@ -1,5 +1,9 @@
+const ChineseWall = require('../ChineseWall');
 const Review = require("../models/review");
 const User = require("../models/User");
+
+const chineseWall = new ChineseWall();
+
 
 
 exports.renderSuperUserPortalPage = async (req, res) => {
@@ -10,25 +14,24 @@ exports.renderSuperUserPortalPage = async (req, res) => {
         // Fetch all reviews from the database
         const reviews = await Review.find();
   
-        // Check if the user has the superuser role
-        if (req.user.role !== 'superuser') {
-            return res.status(403).send("Access Denied");
-        }
-  
+        // Check access based on user role and document
+        const document = 'superuser';
+        chineseWall.checkAccess(req.user.username, document);
+
         // Render the superuser portal page with users and reviews
         res.render("superuser", { users, reviews });
     } catch (error) {
         console.error(error);
         res.status(500).send("Internal Server Error");
     }
-  };
-  
-  exports.superlogout = async (req, res) => {
+};
+
+exports.superlogout = async (req, res) => {
     try {
-      await res.clearCookie("superjwt"),res.clearCookie("jwt");
+      await res.clearCookie("superjwt"), res.clearCookie("jwt");
       res.redirect("/");
     } catch (error) {
       console.error("Error clearing cookie:", error);
       res.status(500).json({ message: "Error logging out" });
     }
-  };
+};

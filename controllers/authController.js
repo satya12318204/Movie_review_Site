@@ -43,6 +43,7 @@ exports.signup = async (req, res) => {
 };
 
 // Handle login
+// Handle login
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -55,12 +56,14 @@ exports.login = async (req, res) => {
       return res.status(401).json({ message: "Invalid email or password" });
     }
 
-    const token = createToken(user._id);
-    res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 2000 });
-
+    const token = createToken(user._id); // Default token for regular users
+    res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
     // Check if the user is an admin
     if (user.role === 'admin') {
-      res.cookie("adminjwt", token, { httpOnly: true, maxAge: maxAge * 5000 });
+      const adminToken = jwt.sign({ userId: user._id }, "your_admin_secret_key", {
+        expiresIn: maxAge * 5000,
+      });
+      res.cookie("adminjwt", adminToken, { httpOnly: true, maxAge: maxAge * 5000 });
       // Send an alert for admin
       return res.send(`
         <script>
@@ -71,7 +74,10 @@ exports.login = async (req, res) => {
     } 
     // Check if the user is a superuser
     else if (user.role === 'superuser') {
-      res.cookie("superjwt", token, { httpOnly: true, maxAge: maxAge * 3000 });
+      const superToken = jwt.sign({ userId: user._id }, "your_superuser_secret_key", {
+        expiresIn: maxAge * 3000,
+      });
+      res.cookie("superjwt", superToken, { httpOnly: true, maxAge: maxAge * 3000 });
       // Send an alert for superuser
       return res.send(`
         <script>
@@ -81,7 +87,7 @@ exports.login = async (req, res) => {
       `);
     }
     else {
-      res.cookie("userjwt", token, { httpOnly: true, maxAge: maxAge * 6000 });
+      res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
       res.redirect("/index");
     }
   } catch (error) {
@@ -89,6 +95,7 @@ exports.login = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+
 
 
 
