@@ -1,7 +1,7 @@
 const Review = require("../models/review");
 const User = require("../models/User");
 const ChineseWall = require('../ChineseWall');
-
+const chineseWall = new ChineseWall();
 exports.renderAdminPortalPage = async (req, res) => {
     try {
         // Fetch all users from the database
@@ -10,12 +10,10 @@ exports.renderAdminPortalPage = async (req, res) => {
         // Fetch all reviews from the database
         const reviews = await Review.find();
   
-        // Check if the user has the admin role
-        if (req.user.role !== 'admin') {
-            return res.status(403).send("Access Denied");
-        }
-  
-        // Render the admin portal page with users and reviews
+        const document = 'admin';
+        chineseWall.checkAccess(req.user.username, document);
+
+        // Render the superuser portal page with users and reviews
         res.render("admin", { users, reviews });
     } catch (error) {
         console.error(error);
