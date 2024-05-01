@@ -1,13 +1,13 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
-const Review = require("../models/review"); 
+const Review = require("../models/review");
 
 const maxAge = 3 * 24 * 60 * 60;
 
 // Function to create JWT token
 const createToken = (id) => {
-  return jwt.sign({  userId : id }, "your_secret_key", {
+  return jwt.sign({ userId: id }, "your_secret_key", {
     expiresIn: maxAge,
   });
 };
@@ -18,7 +18,15 @@ exports.signup = async (req, res) => {
     const { name, email, password } = req.body;
 
     if (!email || !password) {
-      return res.status(400).json({ message: "Email and password are required" });
+      return res
+        .status(400)
+        .json({ message: "Email and password are required" });
+    }
+    // Check if email is in the format @gmail.com
+    if (!email.endsWith("@gmail.com")) {
+      return res
+        .status(400)
+        .json({ message: "Please provide a valid Gmail address" });
     }
 
     const existingUser = await User.findOne({ email });
@@ -59,11 +67,18 @@ exports.login = async (req, res) => {
     const token = createToken(user._id); // Default token for regular users
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
     // Check if the user is an admin
-    if (user.role === 'admin') {
-      const adminToken = jwt.sign({ userId: user._id }, "your_admin_secret_key", {
-        expiresIn: maxAge * 5000,
+    if (user.role === "admin") {
+      const adminToken = jwt.sign(
+        { userId: user._id },
+        "your_admin_secret_key",
+        {
+          expiresIn: maxAge * 5000,
+        }
+      );
+      res.cookie("adminjwt", adminToken, {
+        httpOnly: true,
+        maxAge: maxAge * 5000,
       });
-      res.cookie("adminjwt", adminToken, { httpOnly: true, maxAge: maxAge * 5000 });
       // Send an alert for admin
       return res.send(`
         <script>
@@ -71,13 +86,20 @@ exports.login = async (req, res) => {
           window.location.href = '/admin?admin=true';    
         </script>
       `);
-    } 
+    }
     // Check if the user is a superuser
-    else if (user.role === 'superuser') {
-      const superToken = jwt.sign({ userId: user._id }, "your_superuser_secret_key", {
-        expiresIn: maxAge * 3000,
+    else if (user.role === "superuser") {
+      const superToken = jwt.sign(
+        { userId: user._id },
+        "your_superuser_secret_key",
+        {
+          expiresIn: maxAge * 3000,
+        }
+      );
+      res.cookie("superjwt", superToken, {
+        httpOnly: true,
+        maxAge: maxAge * 3000,
       });
-      res.cookie("superjwt", superToken, { httpOnly: true, maxAge: maxAge * 3000 });
       // Send an alert for superuser
       return res.send(`
         <script>
@@ -85,8 +107,7 @@ exports.login = async (req, res) => {
           window.location.href = '/superuser?superuser=true';
         </script>
       `);
-    }
-    else {
+    } else {
       res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
       res.redirect("/index");
     }
@@ -95,9 +116,6 @@ exports.login = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
-
-
-
 
 // Handle logout
 exports.logout = async (req, res) => {
@@ -124,6 +142,3 @@ exports.storeReview = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
-
-
-
