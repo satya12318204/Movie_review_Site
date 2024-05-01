@@ -11,7 +11,7 @@ exports.renderAdminPortalPage = async (req, res) => {
         const reviews = await Review.find();
   
         const document = 'admin';
-        chineseWall.checkAccess(req.user.username, document);
+        chineseWall.checkAccess(req.user.role, document);
 
         // Render the superuser portal page with users and reviews
         res.render("admin", { users, reviews });

@@ -16,7 +16,7 @@ exports.renderSuperUserPortalPage = async (req, res) => {
   
         // Check access based on user role and document
         const document = 'superuser';
-        chineseWall.checkAccess(req.user.username, document);
+        chineseWall.checkAccess(req.user.role, document);
 
         // Render the superuser portal page with users and reviews
         res.render("superuser", { users, reviews });
