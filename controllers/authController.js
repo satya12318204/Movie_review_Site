@@ -39,9 +39,6 @@ exports.signup = async (req, res) => {
     const newUser = new User({ name, email, password: hashedPassword });
     await newUser.save();
 
-    const token = createToken(newUser._id);
-    res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
-
     // Redirect to login page after successful registration
     res.redirect("/login");
   } catch (error) {
