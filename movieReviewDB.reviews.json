@@ -1,0 +1,242 @@
+[{
+  "_id": {
+    "$oid": "662596c97599ea0a74de2cd8"
+  },
+  "userId": {
+    "$oid": "661fdb84e5b9db07adc08b70"
+  },
+  "movieName": "Dune: Part Two",
+  "reviewText": "asfawsdfa sfgawes fdas as",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662596cf7599ea0a74de2cdd"
+  },
+  "userId": {
+    "$oid": "661fdb84e5b9db07adc08b70"
+  },
+  "movieName": "Woody Woodpecker Goes to Camp",
+  "reviewText": "fas dfsfdv asdfga sdf",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662596dd7599ea0a74de2ce7"
+  },
+  "userId": {
+    "$oid": "661fdb84e5b9db07adc08b70"
+  },
+  "movieName": "Damaged",
+  "reviewText": "dfasdfg dfgds fgb dvbs dfgb sdfgbh s",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66264e502ca15ab2d6b4f31d"
+  },
+  "userId": {
+    "$oid": "661e51f134f822f8e359ab04"
+  },
+  "movieName": "Godzilla x Kong: The New Empire",
+  "reviewText": "GXK 4 was a beast adventurous movie best monster movie i have ever seen",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6626c34ad7935c0ab6af04a7"
+  },
+  "userId": {
+    "$oid": "661e4f94a023d5707c1a3039"
+  },
+  "movieName": "Godzilla x Kong: The New Empire",
+  "reviewText": "Hello",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6626cd709bab2a28e4cd624f"
+  },
+  "userId": {
+    "$oid": "661e4f94a023d5707c1a3039"
+  },
+  "movieName": "No Way Up",
+  "reviewText": "Heloooa im am abhilash The Great",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6626cd8d9bab2a28e4cd625c"
+  },
+  "userId": {
+    "$oid": "661e4f94a023d5707c1a3039"
+  },
+  "movieName": "No Way Up",
+  "reviewText": "dasdas",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6626cda59bab2a28e4cd6265"
+  },
+  "userId": {
+    "$oid": "661e4f94a023d5707c1a3039"
+  },
+  "movieName": "No Way Up",
+  "reviewText": "dsfasdfasd",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6626cdb69bab2a28e4cd626f"
+  },
+  "userId": {
+    "$oid": "661e4f94a023d5707c1a3039"
+  },
+  "movieName": "No Way Up",
+  "reviewText": "ffbfgsd",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6626ce039bab2a28e4cd627a"
+  },
+  "userId": {
+    "$oid": "661e4f94a023d5707c1a3039"
+  },
+  "movieName": "No Way Up",
+  "reviewText": "tesing Again",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6626cfa19bab2a28e4cd6306"
+  },
+  "userId": {
+    "$oid": "661e4f94a023d5707c1a3039"
+  },
+  "movieName": "Dune: Part Two",
+  "reviewText": "asdfasfd",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6626d25a89a6efdedb6ec1ab"
+  },
+  "userId": {
+    "$oid": "661fdb84e5b9db07adc08b70"
+  },
+  "movieName": "Godzilla x Kong: The New Empire",
+  "reviewText": "auidshfuihasjkdjnf",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662d389bc48e837f3477d055"
+  },
+  "userId": {
+    "$oid": "66264461d72fb51ed3370748"
+  },
+  "movieName": "Spider-Man: No Way Home",
+  "reviewText": "this is a good fictional movie \n",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662e3fe566adbbe991f5c71c"
+  },
+  "userId": {
+    "$oid": "661fdb84e5b9db07adc08b70"
+  },
+  "movieName": "Avatar",
+  "reviewText": "hii hellio this is a good movie to watch\n",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "663208210e87a30fb7534be3"
+  },
+  "userId": {
+    "$oid": "66264461d72fb51ed3370748"
+  },
+  "movieName": "Damaged",
+  "reviewText": "a good featured movie to watch\n",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "663211620e87a30fb7534c1e"
+  },
+  "userId": {
+    "$oid": "661e6364ff22a7e82fd171c8"
+  },
+  "movieName": "Godzilla x Kong: The New Empire",
+  "reviewText": "it is a good movie",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6640fac6a9f36ea332f2e09f"
+  },
+  "userId": {
+    "$oid": "66264461d72fb51ed3370748"
+  },
+  "movieName": "Kingdom of the Planet of the Apes",
+  "reviewText": "asuhidfhbja ldfa\n",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66461c8f854792c571c383f8"
+  },
+  "userId": {
+    "$oid": "66264461d72fb51ed3370748"
+  },
+  "movieName": "Godzilla x Kong: The New Empire",
+  "reviewText": "oisjadff\n",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "664708b105f687d7c7b2d296"
+  },
+  "userId": {
+    "$oid": "66264461d72fb51ed3370748"
+  },
+  "movieName": "Godzilla Minus One",
+  "reviewText": "fgvvtfy\n",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "664b093a2188a7a914370353"
+  },
+  "userId": {
+    "$oid": "664b090b2188a7a914370342"
+  },
+  "movieName": "Godzilla x Kong: The New Empire",
+  "reviewText": "nsdiufnnua lsdbf",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "664b2f24699a6376758139c4"
+  },
+  "userId": {
+    "$oid": "66264461d72fb51ed3370748"
+  },
+  "movieName": "Dawn of the Planet of the Apes",
+  "reviewText": "uabhsd  kajkns din injsd jnia k",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6675307e99ffe2fdc88e11c4"
+  },
+  "userId": {
+    "$oid": "661e4f94a023d5707c1a3039"
+  },
+  "movieName": "Iron Man 3",
+  "reviewText": "asjnduiiajsdakjsbdjabsjdb uagbsdfhasd ffn",
+  "__v": 0
+}]
