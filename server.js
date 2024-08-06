@@ -1,13 +1,13 @@
 // Import necessary modules
 const express = require("express");
 const app = express();
-const path = require('path');
+const path = require("path");
 const connectDB = require("./db/databaseconnection"); // Import database connection
-const cookieParser = require('cookie-parser');
+const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 
 // Import ChineseWall
-const ChineseWall = require('./ChineseWall');
+const ChineseWall = require("./ChineseWall");
 const chineseWall = new ChineseWall();
 
 // Import routes
@@ -18,7 +18,7 @@ const adminRoutes = require("./routes/adminRoutes");
 
 // Configure view engine and static files
 app.set("view engine", "ejs");
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 
 // Connect to MongoDB
 connectDB();
@@ -38,12 +38,12 @@ const setUserRole = async (req, res, next) => {
 
     if (!user) {
       // If user is not authenticated, set role as 'guest' or any default role
-      req.userRole = 'guest';
+      req.userRole = "guest";
     } else {
       // Fetch the user from the database to get the role
       const userFromDB = await User.findById(user.id); // Assuming user.id contains the user's ID
       if (!userFromDB) {
-        req.userRole = 'guest'; // Set default role if user not found
+        req.userRole = "guest"; // Set default role if user not found
       } else {
         req.userRole = userFromDB.role; // Set the user's role from the user object fetched from the database
       }
@@ -60,9 +60,8 @@ const setUserRole = async (req, res, next) => {
 app.use(setUserRole);
 
 // Use Chinese Wall for specific routes based on roles
-app.use("/admin", chineseWall.middleware(['admin']));
-app.use("/superuser", chineseWall.middleware(['superuser']));
-
+app.use("/admin", chineseWall.middleware(["admin"]));
+app.use("/superuser", chineseWall.middleware(["superuser"]));
 
 // Use routes
 app.use("/", authRoutes);

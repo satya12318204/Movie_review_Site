@@ -32,6 +32,7 @@ router.get("/index", verifyToken, async (req, res) => {
         res.status(500).json({ message: "Server error" });
     }
 });
+
 router.get("/movie-info", verifyToken, async (req, res) => {
     try {
         // Get user ID from the decoded JWT token
