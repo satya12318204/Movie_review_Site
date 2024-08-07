@@ -144,3 +144,36 @@ function showTvShows(data) {
 
     });
 }
+
+
+const deleteReview = async (reviewId, reviewsContainer) => {
+    try {
+      // Send a DELETE request to the server to delete the review
+      const response = await fetch(`/reviews/${reviewId}`, {
+        method: "DELETE",
+      });
+  
+      if (response.ok) {
+        // Remove the deleted review from the DOM
+        const reviewItem = document.getElementById(`review_${reviewId}`);
+        reviewItem.remove();
+        alert("Review deleted successfully!");
+      } else {
+        alert("Failed to delete the review.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Review deleted Successfully.");
+      location.reload();
+    }
+  };
+  
+  // Add event listener to the "Delete" buttons
+  reviewsContainer.addEventListener("click", async (event) => {
+    if (event.target.classList.contains("delete-review-btn")) {
+      const reviewId = event.target.dataset.reviewId;
+      if (confirm("Are you sure you want to delete this review?")) {
+        deleteReview(reviewId, reviewsContainer);
+      }
+    }
+  });

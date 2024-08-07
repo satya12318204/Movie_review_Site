@@ -1,7 +1,7 @@
 require("dotenv/config");
 const mongoose = require("mongoose");
 
-const url = process.env.MONGO_URL || "mongodb://0.0.0.0:27017/movieReviewDB";
+const url = "mongodb://0.0.0.0:27017/movieReviewDB";
 const connectDB = async () => {
   try {
     await mongoose.connect(url);

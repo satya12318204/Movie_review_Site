@@ -1,126 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Movie Details</title>
-    <link rel="stylesheet" href="/styles/movie_details_styles.css" />
-    <!-- Link to the movie details stylesheet -->
-    <style>
-      body {
-        background-color: #00000096;
-      }
-      
-    </style>
-  </head>
-  <body>
-    <header class="header">
-      <a href="/index" class="logo">CineSurf</a>
-
-      <div class="user-dropdown">
-        <div class="user-info">
-          <img src="/images/default-user-pic.png" alt="User Picture" />
-          <div class="user-details">
-            <span class="username"> <%= name %> </span>
-          </div>
-        </div>
-        <div class="dropdown-content">
-          <div class="user-details">
-            <span class="username"> <%= name %> </span>
-            <span class="email"> <%= email %> </span>
-          </div>
-          <form action="/logout?_method=DELETE" method="POST">
-            <button type="submit">Logout</button>
-          </form>
-        </div>
-      </div>
-    </header>
-
-    <div class="movie-details-container">
-      <div class="movie-details-info">
-        <div class="movie-poster-trailer">
-          <img src="" alt="Movie Poster" id="movie-poster" />
-          <div class="overview" id="movie-overview">
-            <h3>Overview</h3>
-            <p>Placeholder text for overview</p>
-          </div>
-        </div>
-        <div id="trailer-container"></div> 
-      </div>
-      <div class ="cast-details"></div>
-    </div>
-
-    <div class="given_reviews">
-      <div class="review-content">
-      </div>
-    </div>
-
-    <div>
-      <h1>Your review here</h1>
-      <textarea
-        id="reviewTextArea"
-        class="review_text_box"
-        name="w3review"
-        rows="10"
-        cols="50"
-        placeholder="Enter your Review here..."
-      ></textarea>
-      <button id="submitReviewButton" class="reviews-button">Submit</button>
-    </div>
-    <!-- Include the app.js file -->
-    <footer> 
-      <!DOCTYPE html>
-<html lang="en">
 <head>
-  <title>CineSurf - Movie Reviews</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Details</title>
+  <link rel="stylesheet" href="/styles/movie_details_styles.css">
+  <!-- Link to the movie details stylesheet -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <style>
+    body {
+      background-color: #00000096;
+    }
+    .footer {
+      background-color: #24262b;
+      padding: 70px 0;
+      position: bottom;}
+
+    .delete-review-btn {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      float: right; /* Align to the right */
+    }
+  </style>
 </head>
 <body>
+  <header class="header">
+    <a href="/index" class="logo">CineSurf</a>
+
+    <div class="user-dropdown">
+      <div class="user-info">
+        <img src="/images/default-user-pic.png" alt="User Picture">
+        <div class="user-details">
+          <span class="username"><%= name %></span>
+        </div>
+      </div>
+      <div class="dropdown-content">
+        <div class="user-details">
+          <span class="username"><%= name %></span>
+          <span class="email"><%= email %></span>
+        </div>
+        <form action="/logout?_method=DELETE" method="POST">
+          <button type="submit">Logout</button>
+        </form>
+      </div>
+    </div>
+  </header>
+
+  <div class="movie-details-container">
+    <div class="movie-details-info">
+      <div class="movie-poster-trailer">
+        <img src="" alt="Movie Poster" id="movie-poster">
+        <div class="overview" id="movie-overview">
+          <h3>Overview</h3>
+          <p>Placeholder text for overview</p>
+        </div>
+      </div>
+      <div id="trailer-container"></div> 
+    </div>
+    <div class="cast-details"></div>
+  </div>
+
+  <div class="given_reviews">
+    <div class="review-content"></div>
+  </div>
+
+  <div>
+    <h1>Your review here</h1>
+    <textarea
+      id="reviewTextArea"
+      class="review_text_box"
+      name="w3review"
+      rows="10"
+      cols="50"
+      placeholder="Enter your Review here..."
+    ></textarea>
+    <button id="submitReviewButton" class="reviews-button">Submit</button>
+  </div>
 
   <footer class="footer">
-     <div class="container">
-        <div class="row">
-            <div class="footer-col">
-                <h4>About CineSurf</h4>
-                <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Explore</h4>
-                <ul>
-                    <li><a href="#">Movies</a></li>
-                    <li><a href="#">TV Shows</a></li>
-                    <li><a href="#">Reviews</a></li>
-                    <li><a href="#">News</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Follow Us</h4>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-        </div>
-     </div>
-  </footer>
+    <div class="container">
+       <div class="row">
+           <div class="footer-col">
+               <h4>About CineSurf</h4>
+               <ul>
+                   <li><a href="#" id="about">About Us</a></li>
+                   <li><a href="#" id="Contact">Contact Us</a></li>
+                   <li><a href="#" id="PrivacyPolicies">Privacy Policy</a></li>
+                   <li><a href="#" id="terms">Terms of Service</a></li>
+               </ul>
+           </div>
+           <div class="footer-col">
+               <h4>Follow Us</h4>
+               <div class="social-links">
+                   <a href="#"><i class="fab fa-facebook-f"></i></a>
+                   <a href="#"><i class="fab fa-twitter"></i></a>
+                   <a href="#"><i class="fab fa-instagram"></i></a>
+                   <a href="#"><i class="fab fa-youtube"></i></a>
+               </div>
+           </div>
+       </div>
+    </div>
+ </footer>
 
 </body>
 </html>
 
 
-    </footer>
-    <script src="/scripts/movie_info.js">
-      
-    </script>
-  </body>
+
+
+   </footer>
+
+  <script src="/scripts/movie_info.js"></script>
+</body>
 </html>

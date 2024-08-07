@@ -248,7 +248,7 @@ main {
 }
 
 .movie-info {
-  color: #e7e6e6;
+  color: #000000;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -262,7 +262,7 @@ main {
 }
 
 .movie-info span {
-  background-color: #22254b;
+  background-color: #797daf;
   padding: 0.25rem 0.5rem;
   border-radius: 3px;
   font-weight: bold;
@@ -321,7 +321,7 @@ main {
   color: white;
   display: none;
   position: absolute;
-  background-color: #000000;
+  background-color: #7e3b3b48;
   min-width: 200px;
   box-shadow: 8px 8px 16px 0 rgba(0, 0, 0, 0.2);
   z-index: 1;

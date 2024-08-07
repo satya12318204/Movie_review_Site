@@ -118,6 +118,55 @@ router.post('/storeReview', verifyToken, async (req, res) => {
     }
 });
 
+router.delete('/reviews/:reviewId', async (req, res) => {
+    const reviewId = req.params.reviewId;
+
+    // Extract the JWT token from cookies
+    const token = req.cookies.jwt;
+
+    if (!token) {
+        return res.status(401).json({ error: 'No token provided' });
+    }
+
+    let userId, userRole;
+    try {
+        // Verify and decode the JWT token
+        const decoded = jwt.verify(token, 'your_secret_key');
+        userId = decoded.userId; // Extract userId from the decoded token
+
+        // Fetch user details from the database based on the ID
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+        userRole = user.role; // Extract user role
+    } catch (error) {
+        return res.status(403).json({ error: 'Invalid token' });
+    }
+
+    try {
+        const review = await Review.findById(reviewId);
+
+        if (!review) {
+            // If review with the given ID is not found
+            return res.status(404).json({ error: 'Review not found' });
+        }
+
+        // Check if the userId matches the userId associated with the review or if the user is an admin or superuser
+        if (review.userId.toString() === userId || userRole === 'admin' || userRole === 'superuser') {
+            await Review.findByIdAndDelete(reviewId);
+            // Review deleted successfully
+            return res.status(200).json({ message: 'Review deleted successfully' });
+        } else {
+            // Unauthorized to delete this review
+            return res.status(403).json({ error: 'Unauthorized to delete this review' });
+        }
+    } catch (error) {
+        // Handle errors during deletion
+        console.error('Error deleting review:', error);
+        return res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 
 
 router.post("/signup", authController.signup);
