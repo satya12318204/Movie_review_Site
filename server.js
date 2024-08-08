@@ -69,8 +69,15 @@ app.use("/", mainRoutes);
 app.use("/", superuserRoutes);
 app.use("/", adminRoutes);
 
+
+app.get('/about', (req, res) => {
+  res.render('about'); // Renders 'about.ejs' from the 'views' directory
+});
+
+
 // Start the server
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
