@@ -4,6 +4,7 @@ const app = express();
 const path = require("path");
 const connectDB = require("./db/databaseconnection"); // Import database connection
 const cookieParser = require("cookie-parser");
+const multer = require("multer");
 app.use(cookieParser());
 
 // Import ChineseWall
@@ -28,6 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const User = require("./models/User"); // Import the User model
+const Theater = require("./models/theater"); 
 
 // Middleware to set user role based on authentication
 const setUserRole = async (req, res, next) => {
@@ -73,6 +75,41 @@ app.use("/", adminRoutes);
 app.get('/about', (req, res) => {
   res.render('about'); // Renders 'about.ejs' from the 'views' directory
 });
+
+
+// Define storage for multer
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, path.join(__dirname, 'public', 'images'));
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname));
+  }
+});
+
+const upload = multer({ storage: storage });
+
+// Route to display theaters
+app.get('/theater', async (req, res) => {
+  const theaters = await Theater.find({});
+  res.render('theater', { theaters: theaters });
+});
+
+// Route to add a new theater with image upload
+app.post('/add-theater', upload.single('image'), async (req, res) => {
+  const { name, address } = req.body;
+  const image = req.file ? req.file.filename : 'download.jpeg'; // Default image if none is provided
+
+  const newTheater = new Theater({
+      name,
+      address,
+      image
+  });
+
+  await newTheater.save();
+  res.redirect('/theater');
+});
+
 
 
 // Start the server

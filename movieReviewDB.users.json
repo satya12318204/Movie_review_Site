@@ -15,7 +15,7 @@
   "name": "Admin",
   "email": "Admin01@gmail.com",
   "password": "$2b$10$U98QJBBBi9KOwj7tytztU.r.NN.56DZaWsN/wOSjYUi3Bi9Lkdmqu",
-  "role": "superuser",
+  "role": "admin",
   "__v ": 0
 },
 {

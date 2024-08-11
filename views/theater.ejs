@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theaters - CineSurf</title>
+  <link rel="stylesheet" href="/styles/theatre.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+   
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <a href="#" class="logo">CineSurf</a>
+    <nav class="navbar">
+      <a href="#">Home</a>
+      <a href="#">Movies</a>
+      <a href="#">Theaters</a>
+      <form id="form">
+        <input type="search" id="query" placeholder="Search...">
+        <i class="fa fa-search"></i>
+      </form>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hardcoded Theater List -->
+    <section class="theater-list">
+      <div class="theater">
+        <img src="/images/download.jpeg" alt="Theater Image">
+        <div class="theater-info">
+          <h3>Sunset Cinemas</h3>
+          <span class="location">Los Angeles, CA</span>
+        </div>
+      </div>
+
+      <div class="theater">
+        <img src="/images/download.jpeg" alt="Theater Image">
+        <div class="theater-info">
+          <h3>Starline Theaters</h3>
+          <span class="location">New York, NY</span>
+        </div>
+      </div>
+
+      <div class="theater">
+        <img src="/images/download.jpeg" alt="Theater Image">
+        <div class="theater-info">
+          <h3>Galaxy Cinemas</h3>
+          <span class="location">San Francisco, CA</span>
+        </div>
+      </div>
+
+      <div class="theater">
+        <img src="/images/download.jpeg" alt="Theater Image">
+        <div class="theater-info">
+          <h3>Regal Cinemas</h3>
+          <span class="location">Chicago, IL</span>
+        </div>
+      </div>
+
+      <div class="theater">
+        <img src="/images/download.jpeg" alt="Theater Image">
+        <div class="theater-info">
+          <h3>Phoenix Theaters</h3>
+          <span class="location">Houston, TX</span>
+        </div>
+      </div>
+    </section>
+    
+    
+    <!-- Dynamic list of theaters -->
+    <section class="theater-list">
+      <% theaters.forEach(theater => { %>
+        <div class="theater">
+          <img src="/images/<%= theater.image || 'download.jpeg' %>" alt="Theater Image">
+          <div class="theater-info">
+            <h3><%= theater.name %></h3>
+            <span class="location"><%= theater.address %></span>
+          </div>
+        </div>
+      <% }) %>
+
+      <div class="theater">
+        <button id="toggle-form" class="add-theater-button">
+          <i class="fa fa-plus"></i>
+          <div class="theater-info">
+            <h3>add Theatre</h3>
+          </div>
+        </button>
+      </div>
+    </section>
+
+    <!-- Button to show the form -->
+    <div id="add-theater-form" class="add-theater-container">
+      <h2>Add a New Theater</h2>
+      <form action="/add-theater" method="POST" enctype="multipart/form-data">
+        <input type="text" name="name" placeholder="Theater Name" required>
+        <input type="text" name="address" placeholder="Theater Address" required>
+        <input type="file" name="image">
+        <button type="submit">Add Theater</button>
+      </form>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="footer-col">
+          <h4>CineSurf</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Follow Us</h4>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+
+  <!--<script>
+    document.getElementById('toggle-form').addEventListener('click', function() {
+      var formContainer = document.getElementById('add-theater-form');
+      formContainer.classList.toggle('show');
+
+      // Smooth scroll to the form
+      if (formContainer.classList.contains('show'     )) {
+        formContainer.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  </script>-->
+
+</body>
+</html>

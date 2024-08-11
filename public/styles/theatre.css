@@ -1,0 +1,298 @@
+/* Import fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-image: url("https://source.unsplash.com/1600x900/?movie");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #fff;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 100px;
+  background: linear-gradient(90deg, #ff416c, #ff4b2b);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  transition: background 0.5s;
+}
+
+.header:hover {
+  background: linear-gradient(90deg, #000000, #ff416c);
+}
+
+.logo {
+  font-size: 32px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+.navbar a {
+  font-size: 18px;
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  margin-left: 40px;
+  transition: color 0.3s;
+}
+
+.navbar a:hover {
+  color: #f9f9f9;
+}
+
+#form {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-left: 30px;
+}
+
+#query {
+  width: 0;
+  overflow: hidden;
+  transition: width 0.5s ease;
+  padding: 10px 30px 10px 10px;
+  border: 0;
+  border-radius: 20px;
+  font-size: 1em;
+  background: rgba(255, 255, 255, 0.5);
+  color: #000;
+}
+
+#form:hover #query {
+  width: 150px;
+  padding: 8px 30px 8px 10px;
+}
+
+main {
+  flex: 1;
+  padding-top: 80px;
+}
+
+.theater-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+}
+
+.theater {
+  width: 300px;
+  margin: 1rem;
+  border-radius: 5px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.theater:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.theater img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.theater:hover img {
+  transform: scale(1.1);
+}
+
+.theater-info {
+  padding: 15px;
+  text-align: center;
+}
+
+.theater-info h3 {
+  color: #333;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.theater-info .location {
+  color: #ff416c;
+  font-weight: 500;
+}
+
+.add-theater {
+  margin: 20px auto;
+  max-width: 600px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+}
+
+.add-theater form {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-theater input[type="text"] {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.add-theater input[type="file"] {
+  margin-bottom: 10px;
+}
+
+.add-theater button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background: #ff416c;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.add-theater button:hover {
+  background: #ff4b2b;
+}
+
+.footer {
+  background-color: #24262b;
+  padding: 30px 0;
+  color: #ffffff;
+}
+
+.footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer .row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-col {
+  width: 45%;
+}
+
+.footer-col h4 {
+  font-size: 18px;
+  text-transform: capitalize;
+  margin-bottom: 20px;
+  font-weight: 500;
+  position: relative;
+}
+
+.footer-col h4::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  background-color: #ff416c;
+  height: 2px;
+  width: 50px;
+}
+
+.footer-col ul li a {
+  font-size: 16px;
+  text-transform: capitalize;
+  color: #bbbbbb;
+  text-decoration: none;
+  font-weight: 300;
+  transition: all 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+  color: #ffffff;
+}
+
+.footer-bottom {
+  background: #1f1f1f;
+  padding: 10px 0;
+  color: #ffffff;
+}
+
+.footer-bottom p {
+  text-align: center;
+  font-size: 14px;
+  margin: 0;
+}
+
+ /* Existing CSS */
+ .add-theater-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #e50914; /* Netflix red */
+  border: none;
+  border-radius: 50%; /* Circular button */
+  cursor: pointer;
+  position: fixed; /* Fixed position */
+  bottom: 20px; /* Position from bottom */
+  right: 20px; /* Position from right */
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.add-theater-button:hover {
+  background-color: #c8102e; /* Darker red on hover */
+}
+
+.add-theater-container {
+  margin-top: 30px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f4f4f4;
+  display: none; /* Initially hidden */
+  position: fixed; /* Fixed position */
+  bottom: 80px; /* Position from bottom */
+  right: 20px; /* Position from right */
+  width: 300px;
+  z-index: 1000; /* Make sure it appears above other elements */
+}
+
+.add-theater-container.show {
+  display: block; /* Show when 'show' class is added */
+}
+
+.add-theater-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-theater-container input,
+.add-theater-container button {
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 16px;
+}
